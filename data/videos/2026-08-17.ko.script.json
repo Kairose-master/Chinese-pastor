@@ -1,9 +1,10 @@
 {
  "id": "2026-08-17",
  "lang": "ko",
+ "target": "zh",
  "duration": 167.54,
  "voice": "Kore",
- "tts_model": "gemini-3.1-flash-tts-preview",
+ "tts_model": "gemini-2.5-flash-preview-tts",
  "cues": [
   {
    "start": 0.0,

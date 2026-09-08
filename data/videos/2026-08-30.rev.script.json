@@ -1,122 +1,122 @@
 {
  "id": "2026-08-30",
- "lang": "zh",
- "target": "zh",
- "duration": 123.81,
+ "lang": "ko",
+ "target": "ko",
+ "duration": 120.53,
  "voice": "Kore",
- "tts_model": "gemini-2.5-flash-preview-tts",
+ "tts_model": "gemini-2.5-pro-preview-tts",
  "cues": [
   {
    "start": 0.0,
-   "end": 4.821,
+   "end": 5.421,
    "kind": "hook",
    "zh": "让我们一起撒下盼望的种子。",
    "ko": "우리 함께 소망의 씨앗을 심읍시다.",
-   "pinyin": "ràng wǒ men yì qǐ sā xià pàn wàng de zhǒng zi."
+   "pinyin": ""
   },
   {
-   "start": 4.821,
-   "end": 15.002,
+   "start": 5.421,
+   "end": 17.282,
    "kind": "title",
    "zh": "带着盼望撒种的人们",
    "ko": "소망으로 씨를 뿌리는 사람들",
    "pinyin": ""
   },
   {
-   "start": 15.002,
-   "end": 20.063,
+   "start": 17.282,
+   "end": 21.983,
    "kind": "summary",
    "zh": "即使想要的结果还没有显现，",
    "ko": "원하는 결과가 아직 보이지 않아도,",
-   "pinyin": "jí shǐ xiǎng yào de jié guǒ hái méi yǒu xiǎn xiàn,"
+   "pinyin": ""
   },
   {
-   "start": 20.063,
-   "end": 24.884,
+   "start": 21.983,
+   "end": 27.884,
    "kind": "summary",
    "zh": "也要相信神，并在今天撒种。",
    "ko": "하나님을 믿으며 오늘 씨를 뿌려야 합니다.",
-   "pinyin": "yě yào xiāng xìn shén, bìng zài jīn tiān sǎ zhǒng."
+   "pinyin": ""
   },
   {
-   "start": 24.884,
-   "end": 32.025,
+   "start": 27.884,
+   "end": 34.505,
    "kind": "point",
    "zh": "一边等候一边祷告的人，同时也是撒种的人。",
    "ko": "기다리며 기도하는 사람은 동시에 씨를 뿌리는 사람입니다.",
-   "pinyin": "yī biān děng hòu yī biān dǎo gào de rén, tóng shí yě shì sǎ zhǒng de rén."
+   "pinyin": ""
   },
   {
-   "start": 32.025,
-   "end": 38.246,
+   "start": 34.505,
+   "end": 40.926,
    "kind": "point",
    "zh": "我们尽力撒种却不骄傲，也不过度灰心。",
    "ko": "우리는 최선을 다해 심으면서도 교만하거나 낙심하지 않습니다.",
-   "pinyin": "wǒ men jìn lì sǎ zhǒng què bù jiāo ào, yě bù guò dù huī xīn."
+   "pinyin": ""
   },
   {
-   "start": 38.246,
-   "end": 44.867,
+   "start": 40.926,
+   "end": 48.147,
    "kind": "point",
    "zh": "因为我们是与神同工的，在神的田地里工作。",
    "ko": "우리는 하나님의 동역자로서 하나님의 밭에서 일하기 때문입니다.",
-   "pinyin": "yīn wèi wǒ men shì yǔ shén tóng gōng de, zài shén de tián dì lǐ gōng zuò."
+   "pinyin": ""
   },
   {
-   "start": 44.867,
-   "end": 57.728,
+   "start": 48.147,
+   "end": 58.248,
    "kind": "vocab",
-   "zh": "栽种",
-   "ko": "심다, 재배하다",
-   "pinyin": "zāi zhòng"
+   "zh": "升天",
+   "ko": "승천",
+   "pinyin": ""
   },
   {
-   "start": 57.728,
-   "end": 70.069,
+   "start": 58.248,
+   "end": 69.949,
    "kind": "vocab",
-   "zh": "浇灌",
-   "ko": "물을 주다, 관수하다",
-   "pinyin": "jiāo guàn"
+   "zh": "圣灵",
+   "ko": "성령",
+   "pinyin": ""
   },
   {
-   "start": 70.069,
-   "end": 79.37,
+   "start": 69.949,
+   "end": 81.89,
    "kind": "vocab",
-   "zh": "盼望",
-   "ko": "소망, 바라다",
-   "pinyin": "pàn wàng"
+   "zh": "同工",
+   "ko": "동역자",
+   "pinyin": ""
   },
   {
-   "start": 79.37,
-   "end": 94.791,
+   "start": 81.89,
+   "end": 94.031,
    "kind": "vocab",
-   "zh": "理所当然",
-   "ko": "당연하다",
-   "pinyin": "lǐ suǒ dāng rán"
+   "zh": "先行恩典",
+   "ko": "선행은총",
+   "pinyin": ""
   },
   {
-   "start": 94.791,
-   "end": 109.411,
+   "start": 94.031,
+   "end": 105.771,
    "kind": "vocab",
-   "zh": "宝贵",
-   "ko": "소중하다, 귀중하다",
-   "pinyin": "bǎo guì"
+   "zh": "复活",
+   "ko": "부활",
+   "pinyin": ""
   },
   {
-   "start": 109.411,
-   "end": 118.072,
+   "start": 105.771,
+   "end": 114.832,
    "kind": "verse",
    "zh": "我栽种了，亚波罗浇灌了，惟有神叫他生长。",
    "ko": "나는 심었고 아볼로는 물을 주었으되 오직 하나님께서 자라나게 하셨나니.",
-   "pinyin": "wǒ zāi zhòng le, yà bō luó jiāo guàn le, wéi yǒu shén jiào tā shēng zhǎng."
+   "pinyin": ""
   },
   {
-   "start": 118.072,
-   "end": 123.813,
+   "start": 114.832,
+   "end": 120.533,
    "kind": "close",
    "zh": "使它生长的是神。我们下周再见！",
    "ko": "자라게 하시는 분은 하나님이십니다. 다음 주에 만나요!",
-   "pinyin": "shǐ tā shēng zhǎng de shì shén. wǒ men xià zhōu zài jiàn!"
+   "pinyin": ""
   }
  ]
 }

@@ -1,118 +1,118 @@
 {
  "id": "2026-09-06",
- "lang": "zh",
+ "lang": "ko",
  "target": "zh",
- "duration": 123.61,
+ "duration": 163.14,
  "voice": "Kore",
- "tts_model": "gemini-2.5-flash-preview-tts",
+ "tts_model": "gemini-3.1-flash-tts-preview",
  "cues": [
   {
    "start": 0.0,
-   "end": 3.701,
+   "end": 7.01,
    "kind": "hook",
    "zh": "我们都是被差遣的人。",
    "ko": "우린 모두 보냄받은 사람들입니다.",
    "pinyin": "wǒ men dōu shì bèi chāi qiǎn de rén."
   },
   {
-   "start": 3.701,
-   "end": 14.682,
+   "start": 7.01,
+   "end": 22.7,
    "kind": "title",
    "zh": "差遣的人，与被差遣的人",
    "ko": "보내는 사람들, 그리고 보냄받은 사람들",
    "pinyin": ""
   },
   {
-   "start": 14.682,
-   "end": 19.903,
+   "start": 22.7,
+   "end": 36.15,
    "kind": "summary",
    "zh": "教会不是只把人聚集起来的地方，",
    "ko": "교회는 사람을 모으는 곳이 아니라,",
    "pinyin": "jiào huì bú shì zhǐ bǎ rén jù jí qǐ lái de dì fāng,"
   },
   {
-   "start": 19.903,
-   "end": 25.044,
+   "start": 36.15,
+   "end": 48.96,
    "kind": "summary",
    "zh": "而是栽培人并差遣他们的地方。",
    "ko": "사람을 길러서 보내는 곳입니다.",
    "pinyin": "ér shì zāi péi rén bìng chāi qiǎn tā men de dì fāng."
   },
   {
-   "start": 25.044,
-   "end": 31.865,
+   "start": 48.96,
+   "end": 55.53,
    "kind": "point",
    "zh": "宣教的门从跨越界限的安提阿打开。",
    "ko": "선교의 문은 경계를 넘은 안디옥에서 열렸습니다.",
    "pinyin": "xuān jiào de mén cóng kuà yuè jiè xiàn de ān tí ā dǎ kāi."
   },
   {
-   "start": 31.865,
-   "end": 38.286,
+   "start": 55.53,
+   "end": 62.42,
    "kind": "point",
    "zh": "宣教的起点不是会议室，而是敬拜。",
    "ko": "선교의 출발점은 회의실이 아니라 예배였습니다.",
    "pinyin": "xuān jiào de qǐ diǎn bú shì huì yì shì, ér shì jìng bài."
   },
   {
-   "start": 38.286,
-   "end": 44.347,
+   "start": 62.42,
+   "end": 69.83,
    "kind": "point",
    "zh": "离开或留下，我们都在被差遣的位置上。",
    "ko": "떠나든 남든, 우리는 모두 보냄받은 자리에 있습니다.",
    "pinyin": "lí kāi huò liú xià, wǒ men dōu zài bèi chāi qiǎn de wèi zhì shàng."
   },
   {
-   "start": 44.347,
-   "end": 53.648,
+   "start": 69.83,
+   "end": 84.96,
    "kind": "vocab",
    "zh": "差遣",
    "ko": "파송하다, 보내다",
    "pinyin": "chāi qiǎn"
   },
   {
-   "start": 53.648,
-   "end": 68.189,
+   "start": 84.96,
+   "end": 100.01,
    "kind": "vocab",
    "zh": "栽培",
    "ko": "재배하다, 양육하다",
    "pinyin": "zāi péi"
   },
   {
-   "start": 68.189,
-   "end": 84.85,
+   "start": 100.01,
+   "end": 115.98,
    "kind": "vocab",
    "zh": "禁食",
    "ko": "금식하다",
    "pinyin": "jìn shí"
   },
   {
-   "start": 84.85,
-   "end": 97.631,
+   "start": 115.98,
+   "end": 130.23,
    "kind": "vocab",
    "zh": "按手",
    "ko": "안수하다",
    "pinyin": "àn shǒu"
   },
   {
-   "start": 97.631,
-   "end": 109.731,
+   "start": 130.23,
+   "end": 145.88,
    "kind": "vocab",
    "zh": "顺服",
    "ko": "순종하다, 복종하다",
    "pinyin": "shùn fú"
   },
   {
-   "start": 109.731,
-   "end": 116.672,
+   "start": 145.88,
+   "end": 154.01,
    "kind": "verse",
    "zh": "于是禁食祷告，按手在他们头上，就打发他们去了。",
    "ko": "이에 금식하며 기도하고 두 사람에게 안수하여 보내니라.",
    "pinyin": "yú shì jìn shí dǎo gào, àn shǒu zài tā men tóu shàng, jiù dǎ fā tā men qù le."
   },
   {
-   "start": 116.672,
-   "end": 123.613,
+   "start": 154.01,
+   "end": 163.14,
    "kind": "close",
    "zh": "愿你这一周，作为被差遣的人而生活，下周见！",
    "ko": "이번 한 주도 보냄받은 사람으로 살아가기를 바랍니다. 다음 주에 만나요!",

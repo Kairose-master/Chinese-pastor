@@ -4,7 +4,7 @@
  "target": "zh",
  "duration": 171.86,
  "voice": "Kore",
- "tts_model": "gemini-3.1-flash-tts-preview",
+ "tts_model": "gemini-2.5-flash-preview-tts",
  "cues": [
   {
    "start": 0.0,

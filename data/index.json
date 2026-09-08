@@ -346,9 +346,16 @@
     "srt": "data/videos/2026-08-02.ko.srt",
     "poster": "data/videos/2026-08-02.ko.poster.jpg",
     "duration": 153.13,
-    "bytes": 7789611
+    "bytes": 7671163
    },
-   "video_rev": null,
+   "video_rev": {
+    "mp4": "data/videos/2026-08-02.rev.mp4",
+    "vtt": "data/videos/2026-08-02.rev.vtt",
+    "srt": "data/videos/2026-08-02.rev.srt",
+    "poster": "data/videos/2026-08-02.rev.poster.jpg",
+    "duration": 164.18,
+    "bytes": 7858664
+   },
    "card": "data/cards/2026-08-02.png",
    "slide": "data/slides/2026-08-02.greeting.pptx",
    "date": "2026-08-02",
@@ -384,7 +391,7 @@
     "srt": "data/videos/2026-08-02.srt",
     "poster": "data/videos/2026-08-02.poster.jpg",
     "duration": 110.49,
-    "bytes": 6589718
+    "bytes": 6483084
    }
   },
   {
@@ -395,9 +402,16 @@
     "srt": "data/videos/2026-08-17.ko.srt",
     "poster": "data/videos/2026-08-17.ko.poster.jpg",
     "duration": 167.54,
-    "bytes": 7778196
+    "bytes": 7663317
    },
-   "video_rev": null,
+   "video_rev": {
+    "mp4": "data/videos/2026-08-17.rev.mp4",
+    "vtt": "data/videos/2026-08-17.rev.vtt",
+    "srt": "data/videos/2026-08-17.rev.srt",
+    "poster": "data/videos/2026-08-17.rev.poster.jpg",
+    "duration": 133.62,
+    "bytes": 6485266
+   },
    "card": "data/cards/2026-08-17.png",
    "slide": "data/slides/2026-08-17.greeting.pptx",
    "date": "2026-08-17",
@@ -426,7 +440,7 @@
     "srt": "data/videos/2026-08-17.srt",
     "poster": "data/videos/2026-08-17.poster.jpg",
     "duration": 98.25,
-    "bytes": 5875333
+    "bytes": 5772550
    }
   },
   {
@@ -437,9 +451,16 @@
     "srt": "data/videos/2026-08-23.ko.srt",
     "poster": "data/videos/2026-08-23.ko.poster.jpg",
     "duration": 169.58,
-    "bytes": 8408314
+    "bytes": 8344371
    },
-   "video_rev": null,
+   "video_rev": {
+    "mp4": "data/videos/2026-08-23.rev.mp4",
+    "vtt": "data/videos/2026-08-23.rev.vtt",
+    "srt": "data/videos/2026-08-23.rev.srt",
+    "poster": "data/videos/2026-08-23.rev.poster.jpg",
+    "duration": 116.77,
+    "bytes": 6267933
+   },
    "card": "data/cards/2026-08-23.png",
    "slide": "data/slides/2026-08-23.greeting.pptx",
    "date": "2026-08-23",
@@ -475,13 +496,27 @@
     "srt": "data/videos/2026-08-23.srt",
     "poster": "data/videos/2026-08-23.poster.jpg",
     "duration": 126.73,
-    "bytes": 7116315
+    "bytes": 7058173
    }
   },
   {
    "id": "2026-08-30",
-   "video_ko": null,
-   "video_rev": null,
+   "video_ko": {
+    "mp4": "data/videos/2026-08-30.ko.mp4",
+    "vtt": "data/videos/2026-08-30.ko.vtt",
+    "srt": "data/videos/2026-08-30.ko.srt",
+    "poster": "data/videos/2026-08-30.ko.poster.jpg",
+    "duration": 171.86,
+    "bytes": 8375300
+   },
+   "video_rev": {
+    "mp4": "data/videos/2026-08-30.rev.mp4",
+    "vtt": "data/videos/2026-08-30.rev.vtt",
+    "srt": "data/videos/2026-08-30.rev.srt",
+    "poster": "data/videos/2026-08-30.rev.poster.jpg",
+    "duration": 120.53,
+    "bytes": 6405494
+   },
    "card": "data/cards/2026-08-30.png",
    "slide": "data/slides/2026-08-30.greeting.pptx",
    "date": "2026-08-30",
@@ -519,13 +554,27 @@
     "srt": "data/videos/2026-08-30.srt",
     "poster": "data/videos/2026-08-30.poster.jpg",
     "duration": 123.81,
-    "bytes": 6945162
+    "bytes": 6909451
    }
   },
   {
    "id": "2026-09-06",
-   "video_ko": null,
-   "video_rev": null,
+   "video_ko": {
+    "mp4": "data/videos/2026-09-06.ko.mp4",
+    "vtt": "data/videos/2026-09-06.ko.vtt",
+    "srt": "data/videos/2026-09-06.ko.srt",
+    "poster": "data/videos/2026-09-06.ko.poster.jpg",
+    "duration": 163.14,
+    "bytes": 7833379
+   },
+   "video_rev": {
+    "mp4": "data/videos/2026-09-06.rev.mp4",
+    "vtt": "data/videos/2026-09-06.rev.vtt",
+    "srt": "data/videos/2026-09-06.rev.srt",
+    "poster": "data/videos/2026-09-06.rev.poster.jpg",
+    "duration": 121.25,
+    "bytes": 6289966
+   },
    "card": "data/cards/2026-09-06.png",
    "slide": "data/slides/2026-09-06.greeting.pptx",
    "date": "2026-09-06",
@@ -561,7 +610,7 @@
     "srt": "data/videos/2026-09-06.srt",
     "poster": "data/videos/2026-09-06.poster.jpg",
     "duration": 123.61,
-    "bytes": 6859748
+    "bytes": 6794814
    }
   }
  ]

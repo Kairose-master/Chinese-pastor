@@ -1,0 +1,120 @@
+{
+ "id": "2026-08-02",
+ "duration": 110.49,
+ "voice": "Kore",
+ "tts_model": "gemini-2.5-flash-preview-tts",
+ "cues": [
+  {
+   "start": 0.0,
+   "end": 5.181,
+   "kind": "hook",
+   "zh": "与神的爱是无法隔绝的！",
+   "ko": "하나님과의 사랑은 끊을 수가 없답니다!",
+   "pinyin": "yǔ shén de ài shì wú fǎ gé jué de ！"
+  },
+  {
+   "start": 5.181,
+   "end": 17.442,
+   "kind": "title",
+   "zh": "有着不可隔绝之爱的人们",
+   "ko": "끊을 수 없는 사랑을 하는 사람들",
+   "pinyin": ""
+  },
+  {
+   "start": 17.442,
+   "end": 21.943,
+   "kind": "summary",
+   "zh": "我们不仅要相信全能的神，",
+   "ko": "우리는 전능하신 하나님을 믿을 뿐만 아니라,",
+   "pinyin": "wǒ men bù jǐn yào xiāng xìn quán néng de shén ，"
+  },
+  {
+   "start": 21.943,
+   "end": 27.164,
+   "kind": "summary",
+   "zh": "更要通过死而复活的耶稣来信神。",
+   "ko": "죽으시고 부활하신 예수님을 통해 하나님을 믿어야 합니다.",
+   "pinyin": "gèng yào tōng guò sǐ ér fù huó de yē sū lái xìn shén 。"
+  },
+  {
+   "start": 27.164,
+   "end": 32.785,
+   "kind": "point",
+   "zh": "信仰的核心是认识耶稣基督。",
+   "ko": "신앙의 핵심은 예수 그리스도를 아는 것입니다.",
+   "pinyin": "xìn yǎng de hé xīn shì rèn shí yē sū jī dū 。"
+  },
+  {
+   "start": 32.785,
+   "end": 37.966,
+   "kind": "point",
+   "zh": "苦难绝不是神抛弃我们的证据。",
+   "ko": "고난은 결코 하나님이 우리를 버리셨다는 증거가 아닙니다.",
+   "pinyin": "kǔ nàn jué bú shì shén pāo qì wǒ men de zhèng jù 。"
+  },
+  {
+   "start": 37.966,
+   "end": 44.107,
+   "kind": "point",
+   "zh": "耶稣的血让我们结成了不可隔绝的关系。",
+   "ko": "예수님의 피는 우리를 끊을 수 없는 관계로 맺어주었습니다.",
+   "pinyin": "yē sū de xuè ràng wǒ men jié chéng le bù kě gé jué de guān xì 。"
+  },
+  {
+   "start": 44.107,
+   "end": 53.648,
+   "kind": "vocab",
+   "zh": "隔绝",
+   "ko": "단절되다, 끊어지다",
+   "pinyin": "gé jué"
+  },
+  {
+   "start": 53.648,
+   "end": 62.989,
+   "kind": "vocab",
+   "zh": "患难",
+   "ko": "환난, 고난",
+   "pinyin": "huàn nàn"
+  },
+  {
+   "start": 62.989,
+   "end": 75.17,
+   "kind": "vocab",
+   "zh": "信仰",
+   "ko": "신앙",
+   "pinyin": "xìn yǎng"
+  },
+  {
+   "start": 75.17,
+   "end": 86.471,
+   "kind": "vocab",
+   "zh": "屈服",
+   "ko": "굴복하다",
+   "pinyin": "qū fú"
+  },
+  {
+   "start": 86.471,
+   "end": 96.771,
+   "kind": "vocab",
+   "zh": "理所当然",
+   "ko": "당연하다, 이치에 맞다",
+   "pinyin": "lǐ suǒ dāng rán"
+  },
+  {
+   "start": 96.771,
+   "end": 104.352,
+   "kind": "verse",
+   "zh": "然而，靠着爱我们的主，在这一切的事上已经得胜有余了。",
+   "ko": "그러나 이 모든 일에 우리를 사랑하시는 이로 말미암아 우리가 넉넉히 이기느니라.",
+   "pinyin": "rán ér ， kào zhe ài wǒ men de zhǔ ， zài zhè yī qiè de shì shàng yǐ jīng dé shèng yǒu yú le 。"
+  },
+  {
+   "start": 104.352,
+   "end": 110.493,
+   "kind": "close",
+   "zh": "愿你在一切境况中赞美主，下周再见！",
+   "ko": "모든 상황 속에서 주님을 찬양하길 바라며, 다음 주에 만나요!",
+   "pinyin": "yuàn nǐ zài yī qiè jìng kuàng zhōng zàn měi zhǔ ， xià zhōu zài jiàn ！"
+  }
+ ]
+}

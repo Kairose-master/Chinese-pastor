@@ -1,0 +1,120 @@
+{
+ "id": "2026-08-17",
+ "duration": 98.25,
+ "voice": "Kore",
+ "tts_model": "gemini-2.5-flash-preview-tts",
+ "cues": [
+  {
+   "start": 0.0,
+   "end": 4.861,
+   "kind": "hook",
+   "zh": "遇到喜欢的人，我们会怎么做？",
+   "ko": "반가운 사람을 만나면 우리는 어떻게 할까요?",
+   "pinyin": "yù dào xǐ huān de rén ， wǒ men huì zěn me zuò ？"
+  },
+  {
+   "start": 4.861,
+   "end": 15.682,
+   "kind": "title",
+   "zh": "耶稣欢迎我",
+   "ko": "예수님은 나를 반겨 주세요",
+   "pinyin": ""
+  },
+  {
+   "start": 15.682,
+   "end": 19.543,
+   "kind": "summary",
+   "zh": "耶稣非常爱小孩子。",
+   "ko": "예수님은 어린아이들을 아주 많이 사랑하세요.",
+   "pinyin": "yē sū fēi cháng ài xiǎo hái zi 。"
+  },
+  {
+   "start": 19.543,
+   "end": 24.004,
+   "kind": "summary",
+   "zh": "他张开双臂欢迎我们！",
+   "ko": "예수님은 두 팔을 활짝 벌려 우리를 반겨주세요!",
+   "pinyin": "tā zhāng kāi shuāng bì huān yíng wǒ men ！"
+  },
+  {
+   "start": 24.004,
+   "end": 29.185,
+   "kind": "point",
+   "zh": "门徒不让孩子们靠近耶稣。",
+   "ko": "제자들은 아이들이 예수님께 가는 것을 막았어요.",
+   "pinyin": "mén tú bù ràng hái zi men kào jìn yē sū 。"
+  },
+  {
+   "start": 29.185,
+   "end": 34.606,
+   "kind": "point",
+   "zh": "但耶稣抱起孩子，为他们祝福。",
+   "ko": "하지만 예수님은 아이들을 안아주시고 축복해 주셨어요.",
+   "pinyin": "dàn yē sū bào qǐ hái zi ， wèi tā men zhù fú 。"
+  },
+  {
+   "start": 34.606,
+   "end": 38.827,
+   "kind": "point",
+   "zh": "我们随时都可以走向耶稣！",
+   "ko": "우리는 언제든지 예수님께 갈 수 있어요!",
+   "pinyin": "wǒ men suí shí dōu kě yǐ zǒu xiàng yē sū ！"
+  },
+  {
+   "start": 38.827,
+   "end": 46.488,
+   "kind": "vocab",
+   "zh": "欢迎",
+   "ko": "반기다, 환영하다",
+   "pinyin": "huān yíng"
+  },
+  {
+   "start": 46.488,
+   "end": 54.629,
+   "kind": "vocab",
+   "zh": "抱",
+   "ko": "안다",
+   "pinyin": "bào"
+  },
+  {
+   "start": 54.629,
+   "end": 64.29,
+   "kind": "vocab",
+   "zh": "祝福",
+   "ko": "축복하다",
+   "pinyin": "zhù fú"
+  },
+  {
+   "start": 64.29,
+   "end": 73.111,
+   "kind": "vocab",
+   "zh": "没关系",
+   "ko": "괜찮다",
+   "pinyin": "méi guān xì"
+  },
+  {
+   "start": 73.111,
+   "end": 82.611,
+   "kind": "vocab",
+   "zh": "随时",
+   "ko": "언제든지",
+   "pinyin": "suí shí"
+  },
+  {
+   "start": 82.611,
+   "end": 92.952,
+   "kind": "verse",
+   "zh": "让小孩子到我这里来，不要禁止他们；因为在神国的，正是这样的人。",
+   "ko": "어린 아이들이 내게 오는 것을 용납하고 금하지 말라 하나님의 나라가 이런 자의 것이니라",
+   "pinyin": "ràng xiǎo hái zi dào wǒ zhè lǐ lái ， bú yào jìn zhǐ tā men ； yīn wèi zài shén guó de ， zhèng shì zhè yàng de rén 。"
+  },
+  {
+   "start": 92.952,
+   "end": 98.253,
+   "kind": "close",
+   "zh": "耶稣，谢谢您爱我！阿们。",
+   "ko": "예수님, 저를 사랑해 주셔서 감사해요! 아멘.",
+   "pinyin": "yē sū ， xiè xiè nín ài wǒ ！ ā men 。"
+  }
+ ]
+}

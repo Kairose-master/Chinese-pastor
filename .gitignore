@@ -1,0 +1,9 @@
+# local scratch
+.DS_Store
+__pycache__/
+*.pyc
+.env
+node_modules/
+.vercel/
+# working files the pipeline writes outside data/
+*.raw.tmp

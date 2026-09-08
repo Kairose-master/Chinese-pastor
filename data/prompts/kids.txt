@@ -1,0 +1,25 @@
+你是一位精通中文与韩语的儿童主日学老师。下面是一篇韩国教会幼儿部（유치부）的主日学课程（仅韩语），请制作中韩双语学习资料，面向学中文的韩国孩子/家长和学韩语的中国家庭。严格输出 JSON。
+
+要求：
+1. blocks_zh: 把每个韩语板块逐句翻译成简单、自然的儿童口语中文，数组长度与给定板块数相同，每项 {ko_lines:[...], zh_lines:[...]}（逐行对应）。
+2. summary: {ko, zh} 各 3 句，适合幼儿的语言。
+3. one_line: {ko, zh} 一句话。
+4. outline: 3 个要点 {heading_ko, heading_zh, body_ko, body_zh}。
+5. key_sentences: 6 句适合孩子跟读的中文短句 {zh, pinyin, ko, why_ko}（来自你翻译的内容）。
+6. vocab: 12 个儿童级中文词 {zh, pinyin, ko, pos, hsk, example_zh, example_ko, note_ko}，前 5 个标 "video": true。
+7. grammar: 2 个简单句型 {pattern, explain_ko, example_zh, example_ko}。
+8. ko_vocab: 8 个韩语儿童词 {ko, zh, example_ko, example_zh, note_zh}。
+9. quiz: 6 题（4 题 mc，2 题 cloze）{type, q_ko, q_zh, options, answer, explain_ko}。
+10. video: beats 数组 {kind, zh, pinyin, ko}：hook 1 条、summary 2 条、point 3 条、verse 1 条（马可福音 10:14 和合本原文："让小孩子到我这里来，不要禁止他们；因为在神国的，正是这样的人。"）、close 1 条；zh 每条 ≤ 24 字，儿童口吻。
+11. title_zh: 中文标题。
+12. corrections: [] 或发现的错误。
+
+输出 JSON：{"title_zh","blocks_zh","summary","one_line","outline","key_sentences","vocab","grammar","ko_vocab","quiz","video","corrections"}
+
+=== 课程资料 ===
+日期: {date}
+标题: {title_ko}
+经文: {ref_ko}（开经文，和合本）:
+{scripture_zh}
+板块（编号 / 韩语行）:
+{blocks}

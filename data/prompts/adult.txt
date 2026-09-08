@@ -1,0 +1,41 @@
+你是一位精通中文与韩语的圣经教师兼语言教师。下面是一篇在韩国的中国留学生教会（새오름교회 / 言盐教会）的主日讲道，讲道以韩语讲，逐段配有中文翻译。
+请为「用讲道学中文的韩国人」和「用讲道学韩语的中国留学生」制作学习资料。所有字段必须严格按 JSON 输出，不要输出 JSON 之外的任何内容。
+
+要求：
+1. summary: ko / zh 各 4–5 句，忠实概括讲道主旨与脉络（不要添加讲道中没有的内容）。
+2. one_line: 一句话核心信息，ko 与 zh 各一句（≤ 40 字），可直接用作视频标题。
+3. outline: 3–5 个要点，每个要点 {heading_ko, heading_zh, body_ko, body_zh}，body 2–3 句，须引用讲道中的例子或经文。
+4. key_sentences: 8 句最值得背诵、朗读的中文句子，必须从「中文段落」里逐字摘出（不可改写），附对应韩语原句 {zh, pinyin, ko, why_ko}（why_ko 一句话说明为何值得学）。
+5. vocab: 24 个中文词语，从中文段落中选择。要求：约 1/2 是信仰/教会用语（如 差遣、撒种、浇灌、同心合意、禁食、按手、恩典），1/2 是日常高频且对 HSK4–6 学习者有价值的词（如 理所当然、焦急、陌生、承担）。每项 {zh, pinyin, ko, pos, hsk, example_zh, example_ko, note_ko}（pinyin 为带声调的拼音，词间空格）：
+   - ko: 简洁的韩语释义（可列 1–2 个）；pos: 名词/动词/形容词/副词/成语/连词；hsk: 1–6 或 "7+"；
+   - example_zh: 讲道中包含该词的完整原句（逐字摘出）；example_ko: 对应韩语句子；
+   - note_ko: 一句韩语说明（用法、搭配、与韩语汉字词的对应或差异，例如「差遣=파송(派送)과 한자 다름」）。
+   - 按出现顺序或重要度排序，前 5 个应是这篇讲道最核心、最适合做视频卡片的词，把 "video": true 标在这 5 个上。
+6. grammar: 4 个中文句型/语法点 {pattern, explain_ko, example_zh, example_ko}，例句须来自讲道原文（如 即使…也…、不是…而是…、无论…都…、既然…就…）。
+7. ko_vocab: 12 个韩语词/表达，供中国留学生学习，从韩语段落中选（信仰用语与日常语各半），{ko, zh, example_ko, example_zh, note_zh}。
+8. quiz: 10 题。6 题 type "mc"（4 选 1：中文词义→韩语、韩语→中文、讲道内容理解各 2 题），4 题 type "cloze"（从 key_sentences 挖空一个词，answer 为该词，options 给 4 个候选）。每题 {type, q_ko, q_zh, options, answer, explain_ko}，answer 必须与 options 之一完全一致。
+9. video: 竖屏短视频（60–75 秒）的中文旁白脚本，面向想学中文的韩国基督徒，语气温暖、口语、简洁。beats 数组，每个 {kind, zh, pinyin, ko}，zh 每条 ≤ 28 个汉字，ko 为对应韩语字幕：
+   - kind "hook"（1 条，用讲道开头的问候语或最抓人的一句话开场，不要用「大家好」）
+   - kind "summary"（2 条，讲道核心）
+   - kind "point"（3 条，对应 outline 的三点，各一句）
+   - kind "verse"（1 条，本周经文中最核心的一节，逐字引用和合本）
+   - kind "close"（1 条，用本周的问候语或一句祝福收尾，并邀请「下周再见」）
+   词汇卡片由程序另外生成，不要在这里写。
+10. title_zh: 若给定的 title_zh 为空，请给出贴切的中文标题；否则原样返回。
+11. corrections: 你在原文（中韩两版）中发现的明显错别字、漏字或不一致之处（如 "在这切的事上" 应为 "在这一切的事上"），每项 {where, found, suggest, lang}；没有则返回空数组。
+
+输出 JSON 结构：
+{"title_zh": "...", "summary": {"ko": "...", "zh": "..."}, "one_line": {"ko": "...", "zh": "..."},
+ "outline": [...], "key_sentences": [...], "vocab": [...], "grammar": [...], "ko_vocab": [...],
+ "quiz": [...], "video": {"beats": [...]}, "corrections": [...]}
+
+=== 讲道资料 ===
+日期: {date}
+标题: ko「{title_ko}」 zh「{title_zh}」
+经文: {ref_ko}
+问候语: {greeting}
+经文本文（和合本）:
+{scripture_zh}
+
+讲道段落（编号 / 韩语 / 中文）:
+{paragraphs}

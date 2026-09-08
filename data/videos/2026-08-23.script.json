@@ -1,0 +1,120 @@
+{
+ "id": "2026-08-23",
+ "duration": 126.73,
+ "voice": "Kore",
+ "tts_model": "gemini-2.5-flash-preview-tts",
+ "cues": [
+  {
+   "start": 0.0,
+   "end": 5.581,
+   "kind": "hook",
+   "zh": "即使在等待的时候，神也在作工！",
+   "ko": "기다리는 시간에도 하나님은 일하십니다!",
+   "pinyin": "jí shǐ zài děng dài de shí hòu ， shén yě zài zuò gōng ！"
+  },
+  {
+   "start": 5.581,
+   "end": 16.562,
+   "kind": "title",
+   "zh": "先来填补空位的人们",
+   "ko": "자리를 먼저 채우는 사람들",
+   "pinyin": ""
+  },
+  {
+   "start": 16.562,
+   "end": 22.823,
+   "kind": "summary",
+   "zh": "看着教会里空着的座位，你是否感到空落落的？",
+   "ko": "교회의 빈자리를 보며 허전함을 느끼시나요?",
+   "pinyin": "kàn zhe jiào huì lǐ kōng zhe de zuò wèi ， nǐ shì fǒu gǎn dào kōng luò luò de ？"
+  },
+  {
+   "start": 22.823,
+   "end": 30.284,
+   "kind": "summary",
+   "zh": "但这段时间不是结局，而是等候新事发生的时间。",
+   "ko": "하지만 이 시간은 끝이 아니라, 새로운 일을 기다리는 시간입니다.",
+   "pinyin": "dàn zhè duàn shí jiān bú shì jié jú ， ér shì děng hòu xīn shì fā shēng de shí jiān 。"
+  },
+  {
+   "start": 30.284,
+   "end": 37.945,
+   "kind": "point",
+   "zh": "伟大的复兴，总是从少数人同心合意的祷告开始。",
+   "ko": "위대한 부흥은 언제나 소수의 사람들이 마음을 같이하여 드리는 기도에서 시작됩니다.",
+   "pinyin": "wěi dà de fù xīng ， zǒng shì cóng shǎo shù rén tóng xīn hé yì de dǎo gào kāi shǐ 。"
+  },
+  {
+   "start": 37.945,
+   "end": 45.926,
+   "kind": "point",
+   "zh": "神看见的不是空位，而是已经预备好的位置。",
+   "ko": "하나님은 빈자리가 아니라 이미 준비된 자리를 보고 계십니다.",
+   "pinyin": "shén kàn jiàn de bú shì kòng wèi ， ér shì yǐ jīng yù bèi hǎo de wèi zhì 。"
+  },
+  {
+   "start": 45.926,
+   "end": 52.587,
+   "kind": "point",
+   "zh": "让我们不要等人多了才去爱，而是现在就去爱。",
+   "ko": "사람이 많아지기를 기다리지 말고, 지금 곁에 있는 사람을 사랑합시다.",
+   "pinyin": "ràng wǒ men bú yào děng rén duō le cái qù ài ， ér shì xiàn zài jiù qù ài 。"
+  },
+  {
+   "start": 52.587,
+   "end": 65.728,
+   "kind": "vocab",
+   "zh": "礼拜",
+   "ko": "예배",
+   "pinyin": "lǐ bài"
+  },
+  {
+   "start": 65.728,
+   "end": 76.789,
+   "kind": "vocab",
+   "zh": "不知不觉",
+   "ko": "어느덧, 자신도 모르게",
+   "pinyin": "bù zhī bù jué"
+  },
+  {
+   "start": 76.789,
+   "end": 89.85,
+   "kind": "vocab",
+   "zh": "预备",
+   "ko": "준비하다, 예비하다",
+   "pinyin": "yù bèi"
+  },
+  {
+   "start": 89.85,
+   "end": 98.671,
+   "kind": "vocab",
+   "zh": "应许",
+   "ko": "약속하다, 언약",
+   "pinyin": "yīng xǔ"
+  },
+  {
+   "start": 98.671,
+   "end": 107.852,
+   "kind": "vocab",
+   "zh": "复兴",
+   "ko": "부흥",
+   "pinyin": "fù xīng"
+  },
+  {
+   "start": 107.852,
+   "end": 120.592,
+   "kind": "verse",
+   "zh": "这些人同着几个妇人和耶稣的母亲马利亚，并耶稣的弟兄，都同心合意地恒切祷告。",
+   "ko": "사도행전 1장 14절",
+   "pinyin": "zhè xiē rén tóng zhe jǐ gè fù rén hé yē sū de mǔ qīn mǎ lì yà ， bìng yē sū de dì xiōng ， dōu tóng xīn hé yì dì héng qiè dǎo gào 。"
+  },
+  {
+   "start": 120.592,
+   "end": 126.733,
+   "kind": "close",
+   "zh": "愿我们先用祷告填满座位，下周再见！",
+   "ko": "먼저 기도로 자리를 채우는 우리가 되기를 바랍니다. 다음 주에 만나요!",
+   "pinyin": "yuàn wǒ men xiān yòng dǎo gào tián mǎn zuò wèi ， xià zhōu zài jiàn ！"
+  }
+ ]
+}

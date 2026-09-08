@@ -455,7 +455,14 @@
    "example_ko": "예수님은 나를 반겨 주세요.",
    "note_ko": "기쁘게 맞이한다는 뜻이에요.",
    "video": true,
-   "pinyin": "huān yíng"
+   "pinyin": "huān yíng",
+   "bridge": {
+    "hanja": "歡迎",
+    "ko_reading": "환영",
+    "ko_word": "환영(歡迎)하다",
+    "relation": "same",
+    "note_ko": "한국어 '환영(歡迎)'과 같은 한자어입니다."
+   }
   },
   {
    "zh": "抱",
@@ -466,7 +473,14 @@
    "example_ko": "예수님은 아이들을 품에 안아 주셨어요.",
    "note_ko": "두 팔로 감싸 안는 동작이에요.",
    "video": true,
-   "pinyin": "bào"
+   "pinyin": "bào",
+   "bridge": {
+    "hanja": "抱",
+    "ko_reading": "포",
+    "ko_word": "포옹(抱擁)하다 / 안다",
+    "relation": "similar",
+    "note_ko": "'포옹(抱擁)'의 '포' 자를 쓰며 '안다'는 뜻입니다."
+   }
   },
   {
    "zh": "祝福",
@@ -477,7 +491,14 @@
    "example_ko": "예수님은 그들을 축복해 주셨어요.",
    "note_ko": "하나님의 복을 빌어주는 것을 말해요.",
    "video": true,
-   "pinyin": "zhù fú"
+   "pinyin": "zhù fú",
+   "bridge": {
+    "hanja": "祝福",
+    "ko_reading": "축복",
+    "ko_word": "축복(祝福)하다",
+    "relation": "same",
+    "note_ko": "한국어 '축복(祝福)'과 완전히 같은 한자어입니다."
+   }
   },
   {
    "zh": "没关系",
@@ -488,7 +509,14 @@
    "example_ko": "실수해도 괜찮아요.",
    "note_ko": "문제가 되지 않는다고 위로할 때 써요.",
    "video": true,
-   "pinyin": "méi guān xì"
+   "pinyin": "méi guān xì",
+   "bridge": {
+    "hanja": "沒關係",
+    "ko_reading": "몰관계",
+    "ko_word": "상관(相關)없다 / 괜찮다",
+    "relation": "similar",
+    "note_ko": "'관계(關係)가 없다(沒)'는 뜻으로 '괜찮다'입니다."
+   }
   },
   {
    "zh": "随时",
@@ -499,7 +527,14 @@
    "example_ko": "언제든지 예수님께 갈 수 있어요!",
    "note_ko": "시간에 상관없이 항상 가능하다는 뜻이에요.",
    "video": true,
-   "pinyin": "suí shí"
+   "pinyin": "suí shí",
+   "bridge": {
+    "hanja": "隨時",
+    "ko_reading": "수시",
+    "ko_word": "수시(隨時)로 / 언제든지",
+    "relation": "same",
+    "note_ko": "한국어 '수시(隨時)'와 같은 한자어입니다."
+   }
   },
   {
    "zh": "开心",
@@ -510,7 +545,14 @@
    "example_ko": "기쁠 때",
    "note_ko": "마음이 즐겁고 좋은 상태예요.",
    "pinyin": "kāi xīn",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "開心",
+    "ko_reading": "개심",
+    "ko_word": "기쁘다 / 즐겁다",
+    "relation": "different",
+    "note_ko": "'마음(心)이 열리다(開)'에서 유래하여 '기쁘다'는 뜻."
+   }
   },
   {
    "zh": "难过",
@@ -521,7 +563,14 @@
    "example_ko": "아이들의 마음은 슬펐어요.",
    "note_ko": "마음이 아프고 슬픈 상태예요.",
    "pinyin": "nán guò",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "難過",
+    "ko_reading": "난과",
+    "ko_word": "슬프다 / 속상하다",
+    "relation": "different",
+    "note_ko": "'지내기(過) 어렵다(難)'는 뜻에서 '슬프다'가 됨."
+   }
   },
   {
    "zh": "害怕",
@@ -532,7 +581,14 @@
    "example_ko": "무서울 때",
    "note_ko": "겁이 나고 두려운 감정이에요.",
    "pinyin": "hài pà",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "害怕",
+    "ko_reading": "해파",
+    "ko_word": "무섭다 / 두렵다",
+    "relation": "different",
+    "note_ko": "한국어에는 없는 한자 조합으로 '두렵다'는 뜻입니다."
+   }
   },
   {
    "zh": "珍贵",
@@ -543,7 +599,14 @@
    "example_ko": "나는 예수님께 소중해요.",
    "note_ko": "매우 귀하고 중요하다는 뜻이에요.",
    "pinyin": "zhēn guì",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "珍貴",
+    "ko_reading": "진귀",
+    "ko_word": "진귀(珍貴)하다 / 소중하다",
+    "relation": "similar",
+    "note_ko": "한국어 '진귀(珍貴)하다'와 같은 한자입니다."
+   }
   },
   {
    "zh": "跑",
@@ -554,7 +617,14 @@
    "example_ko": "나는 예수님께 달려갈래요!",
    "note_ko": "빠르게 발을 움직여 가는 동작이에요.",
    "pinyin": "pǎo",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "跑",
+    "ko_reading": "포",
+    "ko_word": "달리다 / 뛰다",
+    "relation": "none",
+    "note_ko": "발 족(足) 변이 있는 한자로 '달리다'는 뜻입니다."
+   }
   },
   {
    "zh": "谢谢",
@@ -565,7 +635,14 @@
    "example_ko": "예수님, 저를 사랑해 주셔서 감사해요.",
    "note_ko": "고마운 마음을 표현하는 가장 기본적인 인사예요.",
    "pinyin": "xiè xiè",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "謝謝",
+    "ko_reading": "사사",
+    "ko_word": "감사(感謝)하다",
+    "relation": "similar",
+    "note_ko": "'감사(感謝)'의 '사(謝)'를 두 번 쓴 형태입니다."
+   }
   },
   {
    "zh": "忙",
@@ -576,7 +653,14 @@
    "example_ko": "예수님은 바쁘세요.",
    "note_ko": "할 일이 많아 시간이 없다는 뜻이에요.",
    "pinyin": "máng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "忙",
+    "ko_reading": "망",
+    "ko_word": "다망(多忙)하다 / 바쁘다",
+    "relation": "similar",
+    "note_ko": "'다망(多忙)하다'의 '망(忙)'으로 '바쁘다'는 뜻."
+   }
   }
  ],
  "video": {

@@ -264,3 +264,82 @@ th { font-size: .75rem; letter-spacing: .05em; text-transform: uppercase; color:
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* ---- phase 2: daily sentence, bridge, share, bible study ---- */
+.daily { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; background: #111827; color: #f1eee6; border-radius: 16px; padding: 28px 32px; margin-bottom: 28px; box-shadow: var(--shadow); }
+.daily .eyebrow { color: #e8b44c; }
+.daily .zh { font-family: var(--font-zh-display); font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.6rem); line-height: 1.35; margin: 8px 0 4px; text-wrap: balance; }
+.daily .py { color: #e8b44c; font-size: 1rem; }
+.daily .ko { color: #c3c8d4; margin-top: 8px; font-size: 1.05rem; }
+.daily .src { color: #8c94a8; font-size: .8rem; margin-top: 10px; }
+.daily .src a { color: #e8b44c; }
+.daily .actions { display: flex; flex-direction: column; gap: 8px; }
+.daily .btn, .daily .speak { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18); color: #f1eee6; }
+.daily .btn.primary { background: #e8b44c; color: #1b1608; border-color: #e8b44c; }
+.bridge { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; font-size: .82rem; padding: 6px 8px; border-radius: 6px; background: var(--bg-sunken); margin-top: 4px; }
+.bridge .rel { font-size: .68rem; font-weight: 700; padding: 1px 7px; border-radius: 999px; letter-spacing: .04em; }
+.bridge .rel.same { background: var(--teal-soft); color: var(--teal); }
+.bridge .rel.similar { background: var(--gold-soft); color: var(--gold); }
+.bridge .rel.different { background: color-mix(in srgb, var(--bad) 14%, var(--bg)); color: var(--bad); }
+.bridge .rel.none { background: var(--bg-raised); color: var(--ink-3); border: 1px solid var(--line); }
+.bridge .hanja { font-family: var(--font-zh-display); }
+.bridge .note { color: var(--ink-3); flex-basis: 100%; }
+.share-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.share-preview { max-width: 320px; border-radius: 10px; box-shadow: var(--shadow); }
+.lang-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.lang-toggle button { border: 0; background: var(--bg-raised); padding: 5px 12px; font-size: .85rem; }
+.lang-toggle button[aria-pressed="true"] { background: var(--gold); color: #1b1608; }
+/* bible study */
+.bible-layout { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start; }
+.picker { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.picker select, .picker input { font: inherit; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-raised); color: var(--ink); }
+.picker input[type=number] { width: 70px; }
+.gl { border-bottom: 1px dotted var(--gold); cursor: help; }
+.gl-panel { position: sticky; top: 70px; display: grid; gap: 10px; }
+.gl-term { padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-raised); }
+.gl-term .w { font-family: var(--font-zh-display); font-size: 1.25rem; display: flex; gap: 8px; align-items: baseline; }
+.gl-term .cat { font-size: .68rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: .05em; }
+.gl-term .d { font-size: .85rem; color: var(--ink-2); margin-top: 2px; }
+.gl-term .u { font-size: .82rem; margin-top: 4px; border-top: 1px dashed var(--line); padding-top: 4px; }
+.gl-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.study h3 { margin: 14px 0 6px; }
+.study .kw { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.study .kw div { padding: 10px 12px; background: var(--bg-sunken); border-radius: 8px; font-size: .9rem; }
+.study .kw b { font-family: var(--font-zh-display); font-size: 1.15rem; }
+.study .orig { font-family: var(--font-mono); color: var(--ink-3); font-size: .8rem; }
+.study ol, .study ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.study .q li { padding: 8px 10px; background: var(--bg-raised); border: 1px solid var(--line); border-radius: 8px; list-style-position: inside; }
+.reflinks { display: flex; gap: 8px; flex-wrap: wrap; }
+.reflinks a { text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .85rem; background: var(--bg-raised); }
+.reflinks a:hover { border-color: var(--gold); }
+.disclaimer { font-size: .78rem; color: var(--warn); background: color-mix(in srgb, var(--warn) 10%, var(--bg)); padding: 8px 10px; border-radius: 8px; }
+@media (max-width: 800px) { .daily, .bible-layout { grid-template-columns: 1fr; } .gl-panel { position: static; } }
+
+/* ---- challenge (따라 읽기) ---- */
+.chal { max-width: 720px; margin: 0 auto; }
+.chal .target { background: var(--bg-raised); border: 1px solid var(--line); border-radius: 14px; padding: 28px 24px; text-align: center; box-shadow: var(--shadow); }
+.chal .target .zh { font-family: var(--font-zh-display); font-size: clamp(1.5rem, 1rem + 2vw, 2.3rem); line-height: 1.4; }
+.chal .target .ko { color: var(--ink-2); margin-top: 8px; }
+.chal .timer { font-family: var(--font-mono); font-size: 2rem; font-variant-numeric: tabular-nums; color: var(--gold); }
+.chal .timer.low { color: var(--bad); }
+.chal .heard { min-height: 1.6em; font-size: 1.05rem; margin-top: 12px; color: var(--ink-2); }
+.chal .heard b { color: var(--ink); }
+.chal .mic { width: 84px; height: 84px; border-radius: 50%; border: 3px solid var(--gold); background: var(--bg-raised); font-size: 1.8rem; display: grid; place-items: center; margin: 14px auto 0; }
+.chal .mic.on { background: var(--bad); border-color: var(--bad); color: #fff; animation: pulse 1s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(179,38,30,.4); } 100% { box-shadow: 0 0 0 18px rgba(179,38,30,0); } }
+.chal .scores { display: grid; gap: 6px; margin-top: 16px; }
+.chal .scores li { list-style: none; display: grid; grid-template-columns: 1fr 70px; gap: 10px; padding: 8px 12px; background: var(--bg-raised); border: 1px solid var(--line); border-radius: 8px; align-items: center; }
+.chal .scores .pct { font-family: var(--font-mono); font-size: 1.1rem; text-align: right; }
+.chal .big { font-family: var(--font-zh-display); font-size: 3.4rem; color: var(--gold); text-align: center; line-height: 1.1; }
+.pct.g { color: var(--good); } .pct.w { color: var(--warn); } .pct.b { color: var(--bad); }
+/* screen mode (예배 전 화면) */
+body.screen .topbar, body.screen .footer { display: none; }
+body.screen .main { max-width: none; padding: 0; }
+.screen-stage { min-height: 100vh; background: #111827; color: #f7f3ea; display: grid; place-items: center; text-align: center; padding: 6vh 6vw; cursor: pointer; user-select: none; }
+.screen-stage .lbl { color: #e8b44c; font-size: clamp(1rem, .8rem + 1vw, 1.6rem); letter-spacing: .05em; border: 2px solid #e8b44c; border-radius: 999px; padding: .3em 1.2em; display: inline-block; margin-bottom: 4vh; }
+.screen-stage .zh { font-family: var(--font-zh-display); font-size: clamp(2.4rem, 2rem + 5vw, 7rem); line-height: 1.3; text-wrap: balance; }
+.screen-stage .py { display: block; color: #e8b44c; font-family: var(--font-mono); font-size: clamp(1.1rem, .9rem + 1.6vw, 2.4rem); margin-top: 2vh; }
+.screen-stage .ko { color: #c3c8d4; font-size: clamp(1.4rem, 1.1rem + 2vw, 3.2rem); margin-top: 4vh; font-family: var(--font-ko); }
+.screen-stage .foot { position: fixed; bottom: 3vh; left: 0; right: 0; color: #8c94a8; font-size: clamp(.8rem, .7rem + .5vw, 1.1rem); }
+.screen-stage .dots { position: fixed; top: 3vh; right: 3vw; color: #8c94a8; font-family: var(--font-mono); }
+.screen-stage .hint { position: fixed; top: 3vh; left: 3vw; color: #8c94a8; font-size: .85rem; }

@@ -80,7 +80,7 @@
     const meta = (await loadIndex()).sermons.find((s) => s.id === id);
     if (!meta || meta.placeholder) return null;
     const r = await fetch(meta.file); const d = await r.json();
-    d.videoMeta = meta.video; state.cache[id] = d; return d;
+    d.videoMeta = meta.video; d.videoKoMeta = meta.video_ko; d.videoRevMeta = meta.video_rev; d.cardMeta = meta.card; d.slideMeta = meta.slide; state.cache[id] = d; return d;
   }
   const fmtDate = (iso) => { const [y, m, d] = iso.split("-"); return `${y}.${m}.${d}`; };
   const weekday = (iso) => ["일", "월", "화", "수", "목", "금", "토"][new Date(iso + "T00:00:00").getDay()];
@@ -91,12 +91,16 @@
     const hash = location.hash.replace(/^#\/?/, "");
     const [seg, id, tab] = hash.split("/");
     document.querySelectorAll("[data-nav]").forEach((a) => a.classList.toggle("active", a.dataset.nav === (seg || "home")));
-    main.innerHTML = `<p class="muted">불러오는 중…</p>`;
+    document.body.classList.toggle("screen", seg === "screen");
+    main.innerHTML = `<p class="muted">불러오는 중…</p>`; main.onclick = null;
     try {
       if (seg === "s" && id) return await viewSermon(id, tab || "summary");
       if (seg === "vocab") return await viewVocab();
       if (seg === "review") return await viewReview();
       if (seg === "import") return viewImport();
+      if (seg === "bible") return await viewBible(id, tab);
+      if (seg === "screen" && id) return await viewScreen(id);
+      if (seg === "challenge" && id) return await viewChallenge(id);
       return await viewHome();
     } catch (e) { console.error(e); main.innerHTML = `<div class="card"><h2>오류</h2><p>${esc(e.message)}</p></div>`; }
     finally { window.scrollTo(0, 0); }
@@ -108,7 +112,17 @@
     const latest = [...sermons].reverse().find((s) => !s.placeholder);
     const words = sermons.reduce((n, s) => n + (s.vocab_count || 0), 0);
     const due = dueCards().length;
-    main.innerHTML = `
+    const pool = idx.daily || [];
+    const dayN = Math.floor(Date.now() / 86400e3);
+    let dailyI = (dayN + (store.get("cp.dailyOffset", 0))) % Math.max(1, pool.length);
+    const dailyHtml = () => { const c = pool[dailyI]; if (!c) return ""; const src = sermons.find((x) => x.id === c.sid);
+      return `<section class="daily" id="daily">
+        <div><p class="eyebrow">오늘의 한 문장 · 今日一句 — ${fmtDate(new Date().toISOString().slice(0, 10))}</p>
+          <p class="zh" lang="zh">${esc(c.zh)}</p>${c.pinyin ? `<p class="py">${esc(c.pinyin)}</p>` : ""}<p class="ko">${esc(c.ko)}</p>
+          <p class="src">${c.kind === "greeting" ? "그 주의 인사말" : "설교 핵심 문장"} · <a href="#/s/${c.sid}/vocab">${src ? fmtDate(src.date) + " " + esc(src.title.ko) : c.sid}</a></p></div>
+        <div class="actions">${sayBtn(c.zh)} ${sayBtn(c.ko, "ko")}<button class="btn" type="button" data-card="daily">이미지 카드</button><button class="btn" type="button" id="daily-next">다른 문장</button></div>
+      </section>`; };
+    main.innerHTML = dailyHtml() + `
       <section class="hero">
         <div>
           <p class="eyebrow">${esc(idx.church.ko)} · ${esc(idx.church.zh)} · 주일예배</p>
@@ -128,7 +142,7 @@
           ${latest.greeting ? `<p class="greeting-zh" lang="zh">${esc(latest.greeting.zh?.[0] || "")}</p><p class="muted">${esc(latest.greeting.ko?.[0] || "")}</p>
             <p style="margin-top:8px">${sayBtn(latest.greeting.zh?.[0] || "", "zh")} ${sayBtn(latest.greeting.ko?.[0] || "", "ko")}</p>`
             : `<p class="greeting-zh" lang="zh">${esc(latest.title.zh || "")}</p><p class="muted">${esc(latest.title.ko)}</p>`}
-          <p style="margin-top:12px"><a class="btn primary" href="#/s/${latest.id}">이번 주 설교 열기 →</a></p>
+          <p style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap"><a class="btn primary" href="#/s/${latest.id}">이번 주 설교 열기 →</a><a class="btn" href="#/challenge/${latest.id}">🎙 30초 도전</a><a class="btn" href="#/screen/${latest.id}">▣ 예배 전 화면</a></p>
         </aside>` : ""}
       </section>
       <h2 style="margin-bottom:12px">주일 순서 · 主日顺序</h2>
@@ -152,6 +166,10 @@
             </div>
           </a>`).join("")}
       </div>`;
+    main.querySelector("#daily-next")?.addEventListener("click", () => { store.set("cp.dailyOffset", store.get("cp.dailyOffset", 0) + 1); dailyI = (dailyI + 1) % pool.length; $("#daily").outerHTML = dailyHtml(); bindDaily(); });
+    const bindDaily = () => { main.querySelector("#daily-next")?.addEventListener("click", () => { store.set("cp.dailyOffset", store.get("cp.dailyOffset", 0) + 1); dailyI = (dailyI + 1) % pool.length; $("#daily").outerHTML = dailyHtml(); bindDaily(); });
+      main.querySelector('[data-card="daily"]')?.addEventListener("click", () => { const c = pool[dailyI]; shareSentenceCard({ zh: c.zh, pinyin: c.pinyin, ko: c.ko, foot: (sermons.find((x) => x.id === c.sid)?.title.ko || "") + " · " + fmtDate(c.sid) }); }); };
+    bindDaily();
   }
 
   // ---------- sermon ----------
@@ -169,6 +187,9 @@
             ${s.greeting ? `<span>인사 · 问候: <b lang="zh">${esc(s.greeting.zh[0])}</b> ${sayBtn(s.greeting.zh[0])}</span>` : ""}</div>
         </div>
         <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <a class="btn" href="#/challenge/${id}">🎙 30초 도전</a>
+          <a class="btn" href="#/screen/${id}">▣ 화면</a>
+          <button class="btn primary" type="button" id="share-btn">공유 카드</button>
           <button class="btn" type="button" id="export-json">JSON 내보내기</button>
           ${state.local[id] ? `<button class="btn bad" type="button" id="delete-local">기기에서 삭제</button>` : ""}
         </div>
@@ -177,9 +198,10 @@
       <div class="panel" id="panel"></div>`;
     main.querySelectorAll("[data-tab]").forEach((b) => b.addEventListener("click", () => { location.hash = `#/s/${id}/${b.dataset.tab}`; }));
     $("#export-json").addEventListener("click", () => download(`${id}.json`, JSON.stringify(s, null, 1)));
+    $("#share-btn").addEventListener("click", () => { location.hash = `#/s/${id}/share`; });
     $("#delete-local")?.addEventListener("click", () => { if (confirm("이 기기에 저장된 설교 자료를 삭제할까요?")) { delete state.local[id]; store.set("cp.local", state.local); location.hash = "#/"; } });
     const panel = $("#panel");
-    ({ summary: tabSummary, scripture: tabScripture, reader: tabReader, vocab: tabVocab, practice: tabPractice, video: tabVideo }[tab] || tabSummary)(s, panel);
+    ({ summary: tabSummary, scripture: tabScripture, reader: tabReader, vocab: tabVocab, practice: tabPractice, video: tabVideo, share: tabShare }[tab] || tabSummary)(s, panel);
   }
 
   function tabSummary(s, el) {
@@ -273,11 +295,12 @@
         <div class="vocab-grid" id="vg">${primary.map((w, i) => L() ? zhCard(w, i, s.id) : koCard(w, i, s.id)).join("")}</div>
       </div>
       <div class="card"><h2>핵심 문장 · 关键句 (따라 읽기 · 跟读)</h2>
-        <ol class="keysent">${(s.key_sentences || []).map((k) => `<li><div class="zh" lang="zh">${esc(k.zh)} ${sayBtn(k.zh)}</div><span class="py">${esc(k.pinyin || "")}</span><div class="ko">${esc(k.ko)} ${sayBtn(k.ko, "ko")}</div>${k.why_ko ? `<div class="why">${esc(k.why_ko)}</div>` : ""}</li>`).join("")}</ol></div>
+        <ol class="keysent">${(s.key_sentences || []).map((k, i) => `<li><div class="zh" lang="zh">${esc(k.zh)} ${sayBtn(k.zh)} <button class="speak" type="button" data-kcard="${i}" title="이미지 카드로 저장·공유">▣ 카드</button></div><span class="py">${esc(k.pinyin || "")}</span><div class="ko">${esc(k.ko)} ${sayBtn(k.ko, "ko")}</div>${k.why_ko ? `<div class="why">${esc(k.why_ko)}</div>` : ""}</li>`).join("")}</ol></div>
       <div class="card"><h2>문형 · 句型</h2>
         <div class="grammar">${(s.grammar || []).map((g) => `<div class="word"><div class="pat" lang="zh">${esc(g.pattern)}</div><div class="small">${esc(g.explain_ko)}</div><div class="ex"><span class="zh" lang="zh">${esc(g.example_zh)}</span><br><span class="muted">${esc(g.example_ko)}</span></div></div>`).join("")}</div></div>
       ${L() && koWords.length ? `<div class="card"><h3>중국어 화자를 위한 한국어 단어 · 给中文使用者的韩语词</h3><div class="vocab-grid">${koWords.map((w, i) => koCard(w, i, s.id)).join("")}</div></div>` : ""}
       ${!L() && zhWords.length ? `<div class="card"><h3>给韩语使用者的中文词 · 한국어 화자를 위한 중국어 단어</h3><div class="vocab-grid">${zhWords.map((w, i) => zhCard(w, i, s.id)).join("")}</div></div>` : ""}`;
+    el.querySelectorAll("[data-kcard]").forEach((b) => b.addEventListener("click", () => { const k = s.key_sentences[+b.dataset.kcard]; shareSentenceCard({ zh: k.zh, pinyin: k.pinyin, ko: k.ko, foot: `${s.title.ko} · ${fmtDate(s.date)}` }); }));
     $("#vf").addEventListener("input", (e) => {
       const q = e.target.value.trim().toLowerCase();
       el.querySelectorAll("#vg .word").forEach((c) => { c.classList.toggle("hidden", q && !c.textContent.toLowerCase().includes(q)); });
@@ -301,8 +324,13 @@
       <div class="m">${esc(w.ko)}</div>
       <div class="meta"><span>${esc(w.pos || "")}</span><span>HSK ${esc(w.hsk || "-")}</span>${w.video ? `<span style="color:var(--gold)">▶ 영상 단어</span>` : ""}</div>
       ${w.note_ko ? `<div class="note">${esc(w.note_ko)}</div>` : ""}
+      ${bridgeHtml(w.bridge)}
       ${w.example_zh ? `<div class="ex"><span class="zh" lang="zh">${esc(w.example_zh)}</span> ${sayBtn(w.example_zh)}<br><span>${esc(w.example_ko || "")}</span></div>` : ""}
       <div class="actions"><button class="mini" type="button" data-add="zh:${i}">＋ 플래시카드</button></div></div>`;
+  const REL = { same: "같은 한자어", similar: "비슷한 한자어", different: "뜻 같음·글자 다름", none: "한자어 아님" };
+  const bridgeHtml = (b) => !b || !b.relation ? "" : `<div class="bridge" title="한자어 다리: 한국어 한자어와 이어서 외우기"><span class="rel ${esc(b.relation)}">${REL[b.relation] || esc(b.relation)}</span>
+      <span class="hanja" lang="zh">${esc(b.hanja || "")}</span>${b.ko_reading ? `<span class="muted">${esc(b.ko_reading)}</span>` : ""}${b.ko_word ? `<span>→ <b>${esc(b.ko_word)}</b></span>` : ""}
+      ${b.note_ko ? `<span class="note">${esc(b.note_ko)}</span>` : ""}</div>`;
   const koCard = (w, i, sid) => `<div class="word" data-key="${esc(cardKey(sid, w, "ko"))}">
       <div class="w" style="font-family:var(--font-ko)">${esc(w.ko)} ${sayBtn(w.ko, "ko")}</div>
       <div class="m" lang="zh">${esc(w.zh)}</div>
@@ -390,15 +418,21 @@
   }
 
   function tabVideo(s, el) {
-    const v = s.videoMeta || (s.video?.mp4 ? s.video : null);
+    const vzh = s.videoMeta || (s.video?.mp4 ? s.video : null), vko = s.videoKoMeta || null, vrev = s.videoRevMeta || null;
+    const want = store.get("cp.videoLang", L() ? "ko" : "rev");
+    const lang = want === "ko" && vko ? "ko" : want === "rev" && vrev ? "rev" : "zh";
+    const v = lang === "ko" ? vko : lang === "rev" ? vrev : vzh;
     if (!v) { el.innerHTML = `<div class="card"><h2>요약 영상 · 摘要视频</h2><p class="muted">이 설교의 영상은 아직 렌더링되지 않았습니다. 저장소에서 <code>python3 pipeline/render_video.py data/sermons/${esc(s.id)}.json</code> 을 실행하면 생성됩니다.</p>
       ${s.video?.beats?.length ? `<h3 style="margin-top:14px">영상 대본 · 视频脚本</h3><div class="cues">${s.video.beats.map((b) => `<div class="cue"><div class="t">${esc(b.kind)}</div><div><div class="zh" lang="zh">${esc(b.zh)}</div><span class="py">${esc(b.pinyin || "")}</span><div class="ko">${esc(b.ko)}</div></div></div>`).join("")}</div>` : ""}</div>`; return; }
-    el.innerHTML = `<div class="card"><h2>요약 영상 · 摘要视频 <span class="muted small">${Math.round(v.duration || 0)}초 · 9:16 · 중국어 나레이션(Gemini TTS) · 자막 내장</span></h2>
+    const desc = { zh: "중국어 학습용 · 중국어 나레이션", ko: "중국어 학습용 · 한국어 나레이션 (화면은 중국어)", rev: "韩语学习版 · 한국어가 크게, 한국어 나레이션, 한국어 단어 5개" }[lang];
+    el.innerHTML = `<div class="card"><h2>요약 영상 · 摘要视频 <span class="muted small">${Math.round(v.duration || 0)}초 · 9:16 · ${desc} · 자막 내장</span></h2>
+      ${vko || vrev ? `<p style="margin:8px 0 12px"><span class="lang-toggle" role="group" aria-label="영상 버전"><button type="button" data-vlang="zh" aria-pressed="${lang === "zh"}">中文 배우기 · 中文旁白</button>${vko ? `<button type="button" data-vlang="ko" aria-pressed="${lang === "ko"}">中文 배우기 · 한국어 나레이션</button>` : ""}${vrev ? `<button type="button" data-vlang="rev" aria-pressed="${lang === "rev"}">学韩语 · 韩语版</button>` : ""}</span></p>` : ""}
       <div class="video-wrap">
         <div><video id="vid" controls playsinline preload="metadata" poster="${esc(v.poster || "")}"><source src="${esc(v.mp4)}" type="video/mp4">${v.vtt ? `<track kind="subtitles" srclang="zh" label="中文 / 한국어" src="${esc(v.vtt)}">` : ""}</video>
           <p class="small" style="margin-top:8px"><a href="${esc(v.mp4)}" download>MP4 저장</a> · ${v.srt ? `<a href="${esc(v.srt)}" download>SRT</a>` : ""} · YouTube Shorts / Instagram Reels / 카카오톡 공유용</p></div>
         <div><p class="eyebrow" style="margin-bottom:8px">장면별 대본 · 逐段脚本 (클릭하면 해당 위치로)</p><div class="cues" id="cues">불러오는 중…</div></div>
       </div></div>`;
+    el.querySelectorAll("[data-vlang]").forEach((b) => b.addEventListener("click", () => { store.set("cp.videoLang", b.dataset.vlang); tabVideo(s, el); }));
     const vid = $("#vid");
     const scriptUrl = v.mp4.replace(/\.mp4$/, ".script.json");
     fetch(scriptUrl).then((r) => r.json()).then((sc) => {
@@ -644,6 +678,270 @@
     out.enriched_with = model + " (browser)";
     say(`  ✓ 요약·단어 ${out.vocab.length}·퀴즈 ${(out.quiz || []).length} 생성`);
     return out;
+  }
+
+
+  // ---------- share cards ----------
+  function tabShare(s, el) {
+    const card = s.cardMeta || null;
+    el.innerHTML = `<div class="card"><h2>공유 카드 · 分享卡片</h2>
+      <p class="small muted" style="margin:6px 0 12px">카카오톡·인스타그램에 올릴 이미지입니다. 링크를 카카오톡에 붙여 넣으면 미리보기에도 이 주의 인사말 카드가 뜹니다.</p>
+      <div class="two-col">
+        <div>${card ? `<img class="share-preview" src="${esc(card)}" alt="${esc(s.title.ko)} 공유 카드" style="width:100%;max-width:360px">` : `<p class="muted">이 설교의 카드가 아직 없습니다. <code>python3 pipeline/share_card.py data/sermons/${esc(s.id)}.json</code></p>`}</div>
+        <div style="display:grid;gap:10px;align-content:start">
+          ${card ? `<div class="share-row"><a class="btn primary" href="${esc(card)}" download="${esc(s.id)}-card.png">PNG 저장</a><button class="btn" type="button" id="share-native">공유하기</button><button class="btn" type="button" id="copy-link">링크 복사</button></div>` : ""}
+          <h3>문장 카드 직접 만들기</h3>
+          <p class="small muted">아래 문장 중 하나를 고르면 브라우저에서 바로 카드를 그립니다. 단어 탭의 핵심 문장에도 같은 버튼이 있습니다.</p>
+          <div style="display:grid;gap:6px">
+            ${(s.greeting ? s.greeting.zh.map((z, i) => ({ zh: z, ko: s.greeting.ko[i] || "", pinyin: "" })) : []).concat((s.key_sentences || []).slice(0, 4)).map((k, i) => `<button class="opts-item btn" type="button" data-scard="${i}" style="text-align:left"><span lang="zh">${esc(k.zh)}</span><br><span class="small muted">${esc(k.ko)}</span></button>`).join("")}
+          </div>
+          <div id="scard-out"></div>
+        </div></div></div>`;
+    const list = (s.greeting ? s.greeting.zh.map((z, i) => ({ zh: z, ko: s.greeting.ko[i] || "", pinyin: "" })) : []).concat((s.key_sentences || []).slice(0, 4));
+    el.querySelectorAll("[data-scard]").forEach((b) => b.addEventListener("click", () => shareSentenceCard({ ...list[+b.dataset.scard], foot: `${s.title.ko} · ${fmtDate(s.date)}` }, $("#scard-out"))));
+    $("#copy-link")?.addEventListener("click", async () => { try { await navigator.clipboard.writeText(`${location.origin}${location.pathname}#/s/${s.id}`); toast("링크 복사됨"); } catch { toast("복사 실패"); } });
+    $("#share-native")?.addEventListener("click", async () => {
+      try {
+        const blob = await (await fetch(card)).blob(); const file = new File([blob], `${s.id}-card.png`, { type: "image/png" });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) await navigator.share({ files: [file], title: s.title.ko, text: `${s.greeting?.zh?.[0] || s.title.zh} — ${location.origin}${location.pathname}#/s/${s.id}` });
+        else if (navigator.share) await navigator.share({ title: s.title.ko, url: `${location.origin}${location.pathname}#/s/${s.id}` });
+        else toast("이 브라우저는 공유 메뉴를 지원하지 않습니다. PNG 저장을 이용하세요.");
+      } catch (e) { if (e.name !== "AbortError") toast("공유 실패: " + e.message); }
+    });
+  }
+
+  // draw a 1080×1350 sentence card on a canvas, then offer download / share
+  async function shareSentenceCard({ zh, pinyin, ko, foot }, mount) {
+    pinyin = pinyin || toPinyin(zh);
+    try { await Promise.all([document.fonts.load('700 80px "Noto Serif SC"'), document.fonts.load('400 40px "Noto Sans KR"'), document.fonts.load('400 30px "Noto Sans SC"')]); } catch { /* fallback fonts */ }
+    const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const g = c.getContext("2d");
+    const grad = g.createRadialGradient(W / 2, H * 0.55, 100, W / 2, H * 0.55, 1100); grad.addColorStop(0, "#1e2942"); grad.addColorStop(1, "#111827");
+    g.fillStyle = "#111827"; g.fillRect(0, 0, W, H); g.fillStyle = grad; g.fillRect(0, 0, W, H);
+    const wrapText = (text, font, maxW, cjk) => { g.font = font; const units = cjk ? [...text] : text.split(" "); const lines = []; let cur = ""; for (const u of units) { const cand = cjk ? cur + u : (cur + " " + u).trim(); if (g.measureText(cand).width <= maxW || !cur) cur = cand; else { lines.push(cur); cur = u; } } if (cur) lines.push(cur); return lines; };
+    const block = (text, font, y, maxW, color, cjk, lh) => { const lines = wrapText(text, font, maxW, cjk); g.fillStyle = color; g.textAlign = "center"; g.font = font; lines.forEach((l, i) => g.fillText(l, W / 2, y + i * lh)); return y + lines.length * lh; };
+    g.fillStyle = "#8c94a8"; g.font = '32px "Noto Sans SC", "Noto Sans KR", sans-serif'; g.textAlign = "left"; g.fillText("言盐教会 · 새오름교회", 72, 100); g.textAlign = "right"; g.fillText("讲道中文", W - 72, 100);
+    const size = zh.length <= 12 ? 88 : zh.length <= 22 ? 70 : 56;
+    // measure to centre vertically
+    const zhLines = wrapText(zh, `700 ${size}px "Noto Serif SC", serif`, W - 160, true).length, pyLines = wrapText(pinyin, '34px "Noto Sans SC", sans-serif', W - 180, false).length, koLines = wrapText(ko, '44px "Noto Sans KR", sans-serif', W - 200, false).length;
+    const total = zhLines * size * 1.35 + pyLines * 46 + koLines * 62 + 120; let y = (H - total) / 2 + size;
+    y = block(zh, `700 ${size}px "Noto Serif SC", serif`, y, W - 160, "#f7f3ea", true, size * 1.35);
+    y = block(pinyin, '34px "Noto Sans SC", sans-serif', y, W - 180, "#e8b44c", false, 46) + 30;
+    g.strokeStyle = "#e8b44c"; g.lineWidth = 3; g.beginPath(); g.moveTo(W / 2 - 60, y); g.lineTo(W / 2 + 60, y); g.stroke(); y += 70;
+    block(ko, '44px "Noto Sans KR", sans-serif', y, W - 200, "#c3c8d4", false, 62);
+    g.fillStyle = "#8c94a8"; g.font = '30px "Noto Sans KR", sans-serif'; g.textAlign = "left"; g.fillText(foot || "", 72, H - 110);
+    g.fillStyle = "#78beaa"; g.font = '28px "Noto Sans SC", sans-serif'; g.fillText("chinese-pastor.vercel.app · 설교로 배우는 중국어", 72, H - 60);
+    const url = c.toDataURL("image/png");
+    const html = `<div style="display:grid;gap:8px;margin-top:10px"><img class="share-preview" src="${url}" alt="문장 카드" style="width:100%;max-width:320px"><div class="share-row"><a class="btn primary" href="${url}" download="sentence-card.png">PNG 저장</a><button class="btn" type="button" id="scard-share">공유하기</button></div></div>`;
+    if (mount) mount.innerHTML = html; else { const d = document.createElement("div"); d.className = "toast"; d.style.cssText = "bottom:auto;top:80px;max-width:360px;border-radius:14px;padding:14px;background:var(--bg-raised);color:var(--ink);border:1px solid var(--line)"; d.innerHTML = html + `<p style="text-align:right;margin-top:6px"><button class="btn" type="button" id="scard-close">닫기</button></p>`; document.body.appendChild(d); d.querySelector("#scard-close").onclick = () => d.remove(); mount = d; }
+    mount.querySelector("#scard-share")?.addEventListener("click", async () => {
+      try { const blob = await (await fetch(url)).blob(); const file = new File([blob], "sentence-card.png", { type: "image/png" });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) await navigator.share({ files: [file], text: `${zh}\n${ko}` }); else toast("이 브라우저는 파일 공유를 지원하지 않습니다. PNG 저장을 이용하세요."); }
+      catch (e) { if (e.name !== "AbortError") toast("공유 실패: " + e.message); }
+    });
+  }
+  const toPinyin = (zh) => { try { return window.pinyinPro ? window.pinyinPro.pinyin(zh).replace(/\s*([，。！？；：、“”‘’（）…])\s*/g, (m, p) => ({ "，": ", ", "。": ". ", "！": "! ", "？": "? ", "；": "; ", "：": ": ", "、": ", " }[p] || "")).replace(/\s+/g, " ").trim() : ""; } catch { return ""; } };
+
+  // ---------- 중국어 성경공부 (Bible study) ----------
+  const BOOKS = [[1,"创世记","창세기","Genesis",50,"創"],[2,"出埃及记","출애굽기","Exodus",40,"出"],[3,"利未记","레위기","Leviticus",27,"利"],[4,"民数记","민수기","Numbers",36,"民"],[5,"申命记","신명기","Deuteronomy",34,"申"],[6,"约书亚记","여호수아","Joshua",24,"書"],[7,"士师记","사사기","Judges",21,"士"],[8,"路得记","룻기","Ruth",4,"得"],[9,"撒母耳记上","사무엘상","1 Samuel",31,"撒上"],[10,"撒母耳记下","사무엘하","2 Samuel",24,"撒下"],[11,"列王纪上","열왕기상","1 Kings",22,"王上"],[12,"列王纪下","열왕기하","2 Kings",25,"王下"],[13,"历代志上","역대상","1 Chronicles",29,"代上"],[14,"历代志下","역대하","2 Chronicles",36,"代下"],[15,"以斯拉记","에스라","Ezra",10,"拉"],[16,"尼希米记","느헤미야","Nehemiah",13,"尼"],[17,"以斯帖记","에스더","Esther",10,"斯"],[18,"约伯记","욥기","Job",42,"伯"],[19,"诗篇","시편","Psalms",150,"詩"],[20,"箴言","잠언","Proverbs",31,"箴"],[21,"传道书","전도서","Ecclesiastes",12,"傳"],[22,"雅歌","아가","Song of Songs",8,"歌"],[23,"以赛亚书","이사야","Isaiah",66,"賽"],[24,"耶利米书","예레미야","Jeremiah",52,"耶"],[25,"耶利米哀歌","예레미야애가","Lamentations",5,"哀"],[26,"以西结书","에스겔","Ezekiel",48,"結"],[27,"但以理书","다니엘","Daniel",12,"但"],[28,"何西阿书","호세아","Hosea",14,"何"],[29,"约珥书","요엘","Joel",3,"珥"],[30,"阿摩司书","아모스","Amos",9,"摩"],[31,"俄巴底亚书","오바댜","Obadiah",1,"俄"],[32,"约拿书","요나","Jonah",4,"拿"],[33,"弥迦书","미가","Micah",7,"彌"],[34,"那鸿书","나훔","Nahum",3,"鴻"],[35,"哈巴谷书","하박국","Habakkuk",3,"哈"],[36,"西番雅书","스바냐","Zephaniah",3,"番"],[37,"哈该书","학개","Haggai",2,"該"],[38,"撒迦利亚书","스가랴","Zechariah",14,"亞"],[39,"玛拉基书","말라기","Malachi",4,"瑪"],[40,"马太福音","마태복음","Matthew",28,"太"],[41,"马可福音","마가복음","Mark",16,"可"],[42,"路加福音","누가복음","Luke",24,"路"],[43,"约翰福音","요한복음","John",21,"約"],[44,"使徒行传","사도행전","Acts",28,"徒"],[45,"罗马书","로마서","Romans",16,"羅"],[46,"哥林多前书","고린도전서","1 Corinthians",16,"林前"],[47,"哥林多后书","고린도후서","2 Corinthians",13,"林後"],[48,"加拉太书","갈라디아서","Galatians",6,"加"],[49,"以弗所书","에베소서","Ephesians",6,"弗"],[50,"腓立比书","빌립보서","Philippians",4,"腓"],[51,"歌罗西书","골로새서","Colossians",4,"西"],[52,"帖撒罗尼迦前书","데살로니가전서","1 Thessalonians",5,"帖前"],[53,"帖撒罗尼迦后书","데살로니가후서","2 Thessalonians",3,"帖後"],[54,"提摩太前书","디모데전서","1 Timothy",6,"提前"],[55,"提摩太后书","디모데후서","2 Timothy",4,"提後"],[56,"提多书","디도서","Titus",3,"多"],[57,"腓利门书","빌레몬서","Philemon",1,"門"],[58,"希伯来书","히브리서","Hebrews",13,"來"],[59,"雅各书","야고보서","James",5,"雅"],[60,"彼得前书","베드로전서","1 Peter",5,"彼前"],[61,"彼得后书","베드로후서","2 Peter",3,"彼後"],[62,"约翰一书","요한일서","1 John",5,"約一"],[63,"约翰二书","요한이서","2 John",1,"約二"],[64,"约翰三书","요한삼서","3 John",1,"約三"],[65,"犹大书","유다서","Jude",1,"猶"],[66,"启示录","요한계시록","Revelation",22,"啟"]];
+  const CCBS = { 44: "44Acts", 45: "45Rom" }; // ccbiblestudy folders verified to exist; other books link to the site index
+  const bookByZh = (z) => BOOKS.find((b) => b[1] === z);
+  let glossaryCache = null;
+  async function loadGlossary() { if (glossaryCache) return glossaryCache; try { glossaryCache = await (await fetch("data/glossary.json")).json(); } catch { glossaryCache = { terms: [], categories: [] }; } return glossaryCache; }
+  async function loadChapter(tr, book, ch) {
+    const clean = (t) => t.replace(/<sup>.*?<\/sup>/g, "").replace(/<[^>]+>/g, "").trim();
+    try { const r = await fetch(`data/bible/${tr}/${book}.${ch}.json`); if (r.ok) return await r.json(); } catch { /* not cached */ }
+    const r = await fetch(`https://bolls.life/get-text/${tr}/${book}/${ch}/`); if (!r.ok) throw new Error(`bolls.life ${r.status}`);
+    const arr = await r.json(); return Object.fromEntries(arr.map((v) => [String(v.verse), clean(v.text)]));
+  }
+  async function viewBible(id, range) {
+    const idx = await loadIndex();
+    let book = 45, ch = 8, v1 = 35, v2 = 39;
+    if (id) { const [b, c] = id.split("."); book = +b || 45; ch = +c || 1; if (range) { const m = range.match(/(\d+)(?:-(\d+))?/); v1 = +m[1]; v2 = +(m[2] || m[1]); } else { v1 = 1; v2 = 999; } }
+    else { const last = [...idx.sermons].reverse().find((s) => !s.placeholder && s.ref_zh); const m = last?.ref_zh.match(/(\S+)\s+(\d+):(\d+)(?:-(\d+))?/); if (m && bookByZh(m[1])) { book = bookByZh(m[1])[0]; ch = +m[2]; v1 = +m[3]; v2 = +(m[4] || m[3]); } }
+    const B = BOOKS.find((b) => b[0] === book);
+    main.innerHTML = `<h1>중국어 성경공부 · 中文查经</h1>
+      <p class="muted small" style="margin:6px 0 14px;max-width:72ch">和合本과 개역한글을 나란히 놓고 병음을 붙였습니다. 본문 안의 <span class="gl">기독교 용어</span>는 용어 사전과 연결되고, 설교 본문에는 AI 查经单(배경·구조·원어·토론 질문)이 있습니다. 원어와 주석은 아래 참고 사이트 링크에서 확인하세요.</p>
+      <div class="card" style="margin-bottom:16px"><div class="picker">
+        <select id="bk">${BOOKS.map((b) => `<option value="${b[0]}" ${b[0] === book ? "selected" : ""}>${b[1]} · ${b[2]}</option>`).join("")}</select>
+        <input id="ch" type="number" min="1" max="${B[4]}" value="${ch}"> 장
+        <input id="v1" type="number" min="1" value="${v1}"> – <input id="v2" type="number" min="1" value="${v2 === 999 ? "" : v2}" placeholder="끝"> 절
+        <button class="btn primary" type="button" id="go">열기</button>
+        <span class="small muted">설교 본문: ${idx.sermons.filter((s) => !s.placeholder && s.ref_zh).map((s) => `<a href="#/bible/${bookByZh(s.ref_zh.split(" ")[0])?.[0]}.${s.ref_zh.split(" ")[1].split(":")[0]}/${s.ref_zh.split(":")[1]}">${esc(s.ref_zh)}</a>`).join(" · ")}</span>
+      </div></div>
+      <div class="bible-layout"><div id="bible-main"><p class="muted">불러오는 중…</p></div><aside class="gl-panel" id="gl-panel"></aside></div>
+      <div class="card" style="margin-top:20px"><h2>기독교 중국어 용어 사전 · 基督教中文术语词典</h2><div id="glossary"></div></div>`;
+    $("#go").addEventListener("click", () => { const b = $("#bk").value, c = $("#ch").value, a = $("#v1").value, z = $("#v2").value; location.hash = `#/bible/${b}.${c}/${a}-${z || a}`; });
+    $("#bk").addEventListener("change", () => { $("#ch").max = BOOKS.find((b) => b[0] === +$("#bk").value)[4]; });
+    const gl = await loadGlossary();
+    renderGlossary($("#glossary"), gl);
+    let zh, ko;
+    try { [zh, ko] = await Promise.all([loadChapter("CUNPS", book, ch), loadChapter("KRV", book, ch)]); }
+    catch (e) { $("#bible-main").innerHTML = `<div class="card"><p>본문을 불러오지 못했습니다 (${esc(e.message)}). 인터넷 연결 또는 bolls.life 접근을 확인하세요.</p></div>`; return; }
+    const nums = Object.keys(zh).map(Number).sort((a, b) => a - b).filter((n) => n >= v1 && n <= v2);
+    const terms = gl.terms.filter((t) => t.zh.length >= 2).sort((a, b) => b.zh.length - a.zh.length);
+    const hits = new Map();
+    const mark = (text) => { let html = esc(text); for (const t of terms) { if (text.includes(t.zh)) { hits.set(t.zh, t); html = html.split(t.zh).join(`<span class="gl" data-gl="${esc(t.zh)}" title="${esc(t.pinyin)} · ${esc(t.ko)}">${t.zh}</span>`); } } return html; };
+    const refZh = `${B[1]} ${ch}:${nums[0]}${nums.length > 1 ? "-" + nums[nums.length - 1] : ""}`, refKo = `${B[2]} ${ch}:${nums[0]}${nums.length > 1 ? "-" + nums[nums.length - 1] : ""}`;
+    const links = [
+      [`信望愛 (fhl.net) — 원어·역본 대조`, `https://bible.fhl.net/new/read.php?chineses=${encodeURIComponent(B[5])}&chap=${ch}&sec=${nums[0] || 1}`],
+      [`查經資料大全 (ccbiblestudy) — 註解`, CCBS[book] ? `https://www.ccbiblestudy.net/New%20Testament/${CCBS[book]}/${String(book).padStart(2, "0")}CT${String(ch).padStart(2, "0")}.htm` : "https://www.ccbiblestudy.net/"],
+      [`BibleGateway CUVS`, `https://www.biblegateway.com/passage/?search=${encodeURIComponent(B[3] + " " + ch + ":" + (nums[0] || 1) + (nums.length > 1 ? "-" + nums[nums.length - 1] : ""))}&version=CUVS`],
+      [`微读圣经 (wd.bible)`, `https://wd.bible/bible/${book <= 39 ? "ot" : "nt"}`],
+    ];
+    $("#bible-main").innerHTML = `<div class="card">
+      <h2 lang="zh">${esc(refZh)} <span class="muted" style="font-family:var(--font-ko);font-size:1rem">${esc(refKo)}</span></h2>
+      <p class="small muted">和合本 (CUNPS) · 개역한글 (KRV) · bolls.life. 병음은 브라우저에서 자동 생성(다음자는 틀릴 수 있음).</p>
+      <div>${nums.map((n) => `<div class="verse"><div class="n tabular">${n}</div><div>
+        <div class="zh" lang="zh">${mark(zh[n])} ${sayBtn(zh[n])}</div><span class="py">${esc(toPinyin(zh[n]))}</span>
+        <div class="ko">${esc(ko[n] || "")} ${sayBtn(ko[n] || "", "ko")}</div></div></div>`).join("")}</div>
+      <p style="margin-top:12px">${sayBtn(nums.map((n) => zh[n]).join(""), "zh")} 전체 듣기 · <a href="#/bible/${book}.${ch}">${ch}장 전체</a>${ch > 1 ? ` · <a href="#/bible/${book}.${ch - 1}">← ${ch - 1}장</a>` : ""}${ch < B[4] ? ` · <a href="#/bible/${book}.${ch + 1}">${ch + 1}장 →</a>` : ""}</p>
+      <h3 style="margin-top:16px">참고 사이트 · 参考网站</h3><div class="reflinks">${links.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>
+      <p class="small muted" style="margin-top:6px">查經資料大全은 번체(繁體) 사이트입니다. 사도행전·로마서는 장 단위로 바로 연결되고, 다른 책은 목차로 연결됩니다.</p>
+    </div><div class="card study" id="study" style="margin-top:16px"><p class="muted">查经单 확인 중…</p></div>`;
+    const panel = $("#gl-panel");
+    panel.innerHTML = `<div class="card"><h3>본문 속 용어 · 本段术语 (${hits.size})</h3>${hits.size ? [...hits.values()].map(glTerm).join("") : `<p class="small muted">용어 사전과 겹치는 단어가 없습니다.</p>`}</div>`;
+    $("#bible-main").addEventListener("click", (e) => { const g = e.target.closest("[data-gl]"); if (!g) return; const t = panel.querySelector(`[data-term="${CSS.escape(g.dataset.gl)}"]`); if (t) { t.scrollIntoView({ behavior: "smooth", block: "center" }); t.style.outline = "2px solid var(--gold)"; setTimeout(() => (t.style.outline = ""), 1500); } });
+    renderStudy($("#study"), { book: B, ch, v1: nums[0], v2: nums[nums.length - 1], refZh, text: nums.map((n) => `${n} ${zh[n]}`).join("\n") });
+  }
+  const glTerm = (t) => `<div class="gl-term" data-term="${esc(t.zh)}"><div class="cat">${esc(t.category || "")}</div>
+      <div class="w"><span lang="zh">${esc(t.zh)}</span><span class="py">${esc(t.pinyin || "")}</span>${sayBtn(t.zh)}</div>
+      <div><b>${esc(t.ko)}</b> <span class="muted small">${esc(t.en || "")}</span></div>
+      <div class="d">${esc(t.def_ko || "")}</div>
+      ${t.usage_zh ? `<div class="u"><span lang="zh">${esc(t.usage_zh)}</span><br><span class="muted">${esc(t.usage_ko || "")}</span>${t.ref ? ` <a class="small" href="${refLink(t.ref)}">${esc(t.ref)}</a>` : ""}</div>` : ""}
+      ${t.bridge && t.bridge !== "none" ? bridgeHtml({ relation: t.bridge, hanja: t.hanja, ko_reading: t.ko_reading, ko_word: t.ko, note_ko: t.note_ko }) : t.note_ko ? `<div class="small muted">${esc(t.note_ko)}</div>` : ""}</div>`;
+  const refLink = (ref) => { const m = String(ref).match(/(\S+)\s+(\d+):(\d+)(?:-(\d+))?/); const b = m && bookByZh(m[1]); return b ? `#/bible/${b[0]}.${m[2]}/${m[3]}-${m[4] || m[3]}` : "#/bible"; };
+  function renderGlossary(el, gl) {
+    const cats = gl.categories || [...new Set(gl.terms.map((t) => t.category))];
+    el.innerHTML = `<p class="small muted" style="margin:4px 0 10px">${gl.terms.length}개 용어 · Gemini로 초안을 만들고 和合本 용례를 붙였습니다. 병음은 pypinyin. 오류를 발견하면 <code>data/glossary.json</code>을 고쳐 주세요.</p>
+      <div class="filters" style="margin-bottom:10px"><input id="glq" type="search" placeholder="중국어·한국어·영어로 검색"><select id="glc"><option value="">모든 분류</option>${cats.map((c) => `<option>${esc(c)}</option>`).join("")}</select><button class="btn" type="button" id="gl-csv">CSV (Anki)</button></div>
+      <div class="gl-list" id="gll"></div>`;
+    const draw = () => { const q = $("#glq").value.trim().toLowerCase(), c = $("#glc").value;
+      const f = gl.terms.filter((t) => (!c || t.category === c) && (!q || `${t.zh} ${t.pinyin} ${t.ko} ${t.en} ${t.def_ko}`.toLowerCase().includes(q)));
+      $("#gll").innerHTML = f.slice(0, 120).map(glTerm).join("") + (f.length > 120 ? `<p class="muted small">${f.length - 120}개 더 있음 — 검색으로 좁히세요.</p>` : "") || `<p class="muted">결과 없음</p>`; };
+    $("#glq").addEventListener("input", draw); $("#glc").addEventListener("change", draw); draw();
+    $("#gl-csv").addEventListener("click", () => download("glossary.csv", "﻿" + gl.terms.map((t) => [t.zh, t.pinyin, t.ko, t.en, t.def_ko, t.usage_zh, t.usage_ko, t.ref].map((c) => `"${String(c || "").replace(/"/g, '""')}"`).join(",")).join("\n")));
+  }
+  async function renderStudy(el, { book, ch, v1, v2, refZh, text }) {
+    const file = `data/study/${book[1]}.${ch}.${v1}-${v2}.json`;
+    let notes = null;
+    try { const r = await fetch(file); if (r.ok) notes = await r.json(); } catch { /* none */ }
+    if (!notes) notes = store.get("cp.study", {})[`${book[0]}.${ch}.${v1}-${v2}`] || null;
+    if (!notes) {
+      const key = store.get("cp.gemini", "");
+      el.innerHTML = `<h2>查经单 · 성경공부 노트</h2><p class="small muted">이 구절의 노트가 아직 없습니다. 저장소에서 <code>python3 pipeline/study_notes.py "${esc(refZh)}"</code> 을 실행하거나, ${key ? "아래 버튼으로 브라우저에서 바로 만들 수 있습니다 (Gemini 1회 호출)." : "<a href='#/import'>가져오기</a>에 Gemini 키를 넣으면 여기서 바로 만들 수 있습니다."}</p>
+        ${key ? `<p><button class="btn primary" type="button" id="mk-study">AI 查经单 만들기</button></p>` : ""}`;
+      $("#mk-study")?.addEventListener("click", async () => {
+        $("#mk-study").disabled = true; $("#mk-study").textContent = "생성 중… (30–60초)";
+        try {
+          const tpl = await (await fetch("data/prompts/study.txt")).text();
+          const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=${encodeURIComponent(key)}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ contents: [{ parts: [{ text: tpl.replace("{ref}", refZh).replace("{text}", text) }] }], generationConfig: { temperature: 0.3, responseMimeType: "application/json", maxOutputTokens: 32768 } }) });
+          if (!r.ok) throw new Error(`Gemini ${r.status}`);
+          const j = await r.json(); const n = JSON.parse((j.candidates?.[0]?.content?.parts?.[0]?.text || "").replace(/^```(?:json)?|```$/gm, "").trim());
+          n.ref = refZh; n.generated_by = "gemini-3.1-pro-preview (browser)"; n.disclaimer_ko = "이 자료는 Gemini가 和合本 본문을 바탕으로 작성한 AI 학습 노트입니다. 특정 주석서의 인용이 아닙니다.";
+          const all = store.get("cp.study", {}); all[`${book[0]}.${ch}.${v1}-${v2}`] = n; store.set("cp.study", all); renderStudy(el, { book, ch, v1, v2, refZh, text });
+        } catch (e) { toast("생성 실패: " + e.message); $("#mk-study").disabled = false; $("#mk-study").textContent = "AI 查经单 만들기"; }
+      });
+      return;
+    }
+    const bi = (o) => o ? `<span lang="zh">${esc(o.zh)}</span><br><span class="muted">${esc(o.ko)}</span>` : "";
+    el.innerHTML = `<h2>查经单 · 성경공부 노트 <span class="muted small" style="font-family:var(--font-ko)">${esc(notes.title_zh || "")} · ${esc(notes.title_ko || "")}</span></h2>
+      <p class="disclaimer">${esc(notes.disclaimer_ko || "")} (${esc(notes.generated_by || "")})</p>
+      <h3>배경 · 背景</h3><p>${bi(notes.background)}</p>
+      <h3>구조 · 结构</h3><ol>${(notes.structure || []).map((x) => `<li><b class="tabular">${esc(x.range)}</b> ${bi(x)}</li>`).join("")}</ol>
+      <h3>핵심 단어 · 关键词</h3><div class="kw">${(notes.keywords || []).map((k) => `<div><b lang="zh">${esc(k.zh)}</b> <span class="py">${esc(k.pinyin || "")}</span> ${sayBtn(k.zh)}${k.original ? `<div class="orig">${esc(k.original)}</div>` : ""}<div lang="zh">${esc(k.meaning_zh)}</div><div class="muted">${esc(k.meaning_ko)}</div>${k.verse ? `<div class="small muted">v.${esc(k.verse)}</div>` : ""}</div>`).join("")}</div>
+      <h3>해설 · 解释要点</h3><ol>${(notes.points || []).map((x) => `<li>${bi(x)}</li>`).join("")}</ol>
+      <h3>관련 구절 · 相关经文</h3><ul>${(notes.cross_refs || []).map((x) => `<li><a href="${refLink(x.ref)}" lang="zh">${esc(x.ref)}</a> — <span lang="zh">${esc(x.why_zh)}</span> <span class="muted">${esc(x.why_ko)}</span></li>`).join("")}</ul>
+      <h3>나눔 질문 · 讨论问题</h3><ol class="q">${(notes.questions || []).map((x) => `<li>${bi(x)}</li>`).join("")}</ol>
+      ${notes.memory_verse ? `<h3>암송 · 背诵</h3><p class="one-line"><span lang="zh">${esc(notes.memory_verse.zh)}</span> ${sayBtn(notes.memory_verse.zh)}<span class="py" style="display:block">${esc(notes.memory_verse.pinyin || toPinyin(notes.memory_verse.zh))}</span><span class="ko">${esc(notes.memory_verse.ko)} (${esc(notes.memory_verse.ref)})</span></p>` : ""}
+      ${notes.prayer ? `<h3>기도 · 祷告</h3><p>${bi(notes.prayer)}</p>` : ""}`;
+  }
+
+
+  // ---------- 30초 도전: 5문장 따라 읽기 ----------
+  const norm = (t) => String(t || "").replace(/[\s，。！？；：、“”‘’（）()\[\],.!?;:'"…·\-—]/g, "").toLowerCase();
+  function similarity(a, b) {
+    a = norm(a); b = norm(b); if (!a || !b) return 0;
+    const m = a.length, n = b.length, dp = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]);
+    for (let j = 1; j <= n; j++) dp[0][j] = j;
+    for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    return Math.max(0, Math.round((1 - dp[m][n] / Math.max(m, n)) * 100));
+  }
+  async function viewChallenge(id) {
+    const s = await loadSermon(id); if (!s) { main.innerHTML = `<p class="muted">자료 없음</p>`; return; }
+    const zhMode = L();
+    const pool = (s.greeting ? s.greeting.zh.map((z, i) => ({ zh: z, ko: s.greeting.ko[i] || "", pinyin: toPinyin(z) })) : []).concat(s.key_sentences || []);
+    const items = pool.slice(0, 5).map((k) => ({ target: zhMode ? k.zh : k.ko, other: zhMode ? k.ko : k.zh, pinyin: zhMode ? (k.pinyin || toPinyin(k.zh)) : "", lang: zhMode ? "zh-CN" : "ko-KR" }));
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const bestKey = `cp.best.${id}.${zhMode ? "zh" : "ko"}`; const best = store.get(bestKey, null);
+    let i = 0, left = 30, timer = null, rec = null, results = [], listening = false, started = false;
+    const finish = () => {
+      clearInterval(timer); if (rec) { try { rec.stop(); } catch { /* */ } }
+      while (results.length < items.length) results.push({ heard: "", pct: 0 });
+      const total = Math.round(results.reduce((a, r) => a + r.pct, 0) / items.length);
+      if (!best || total > best.total) store.set(bestKey, { total, at: Date.now() });
+      main.innerHTML = `<div class="chal"><h1 style="text-align:center">결과 · 结果</h1>
+        <p class="big">${total}점</p><p class="muted small" style="text-align:center">${best && total <= best.total ? `최고 기록 ${best.total}점` : "새 최고 기록!"} · 인식된 발음과 원문의 글자 일치율 평균</p>
+        <ol class="scores">${items.map((it, k) => `<li><div><div lang="${it.lang.slice(0, 2)}">${esc(it.target)}</div><div class="small muted">들린 것: <b>${esc(results[k].heard || "—")}</b></div></div><div class="pct ${results[k].pct >= 80 ? "g" : results[k].pct >= 50 ? "w" : "b"}">${results[k].pct}%</div></li>`).join("")}</ol>
+        <p style="display:flex;gap:8px;justify-content:center;margin-top:16px"><button class="btn primary" type="button" id="again">다시 도전</button><a class="btn" href="#/s/${id}/vocab">문장 복습</a><button class="btn" type="button" id="score-card">점수 카드</button></p></div>`;
+      $("#again").onclick = () => viewChallenge(id);
+      $("#score-card").onclick = () => shareSentenceCard({ zh: `${total}分 · 30秒挑战`, pinyin: `${items.length} 문장 따라 읽기`, ko: `${s.title.ko} · ${fmtDate(s.date)}`, foot: "讲道中文 30초 도전" });
+    };
+    const draw = () => {
+      if (i >= items.length) return finish();
+      const it = items[i];
+      main.innerHTML = `<div class="chal">
+        <p class="eyebrow" style="text-align:center">30초 도전 · 30秒挑战 — ${esc(s.title.ko)}</p>
+        <h1 style="text-align:center;margin:6px 0 14px">${zhMode ? "5문장 따라 읽기" : "5个韩语句子跟读"}</h1>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span class="muted tabular">${i + 1} / ${items.length}</span><span class="timer ${left <= 10 ? "low" : ""}" id="timer">${left}s</span></div>
+        <div class="progress"><i style="width:${(i / items.length) * 100}%"></i></div>
+        <div class="target"><div class="zh" lang="${it.lang.slice(0, 2)}">${esc(it.target)}</div>${it.pinyin ? `<span class="py">${esc(it.pinyin)}</span>` : ""}<div class="ko">${esc(it.other)}</div>
+          <div style="margin-top:10px">${sayBtn(it.target, it.lang.slice(0, 2))}</div>
+          <button class="mic ${listening ? "on" : ""}" type="button" id="mic" aria-label="녹음">🎙</button>
+          <div class="heard" id="heard">${SR ? (listening ? "듣는 중… 문장을 읽어 주세요" : (started ? "마이크를 눌러 다음 문장을 읽으세요" : "마이크를 누르면 30초가 시작됩니다")) : "이 브라우저는 음성 인식을 지원하지 않습니다 (Chrome·Edge·Safari 최신 버전 권장). 직접 채점으로 진행합니다."}</div>
+          ${SR ? `<p class="small muted" style="margin-top:8px"><button class="mini" type="button" id="skip">건너뛰기</button></p>` : `<p style="margin-top:10px;display:flex;gap:6px;justify-content:center"><button class="btn good" type="button" data-self="100">잘 읽었다</button><button class="btn" type="button" data-self="60">대충 읽었다</button><button class="btn bad" type="button" data-self="20">못 읽었다</button></p>`}
+        </div>
+        ${best ? `<p class="small muted" style="text-align:center;margin-top:10px">최고 기록 ${best.total}점</p>` : ""}
+        <p class="small muted" style="text-align:center;margin-top:10px">점수 = 음성 인식 결과와 원문의 글자 일치율. 마이크 권한을 허용해 주세요. 소리는 브라우저 안에서만 처리됩니다.</p></div>`;
+      $("#timer").textContent = `${left}s`;
+      const startTimer = () => { if (started) return; started = true; timer = setInterval(() => { left--; const t = $("#timer"); if (t) { t.textContent = `${left}s`; t.classList.toggle("low", left <= 10); } if (left <= 0) finish(); }, 1000); };
+      $("#mic")?.addEventListener("click", () => {
+        startTimer();
+        if (!SR) return;
+        if (listening) { try { rec.stop(); } catch { /* */ } return; }
+        rec = new SR(); rec.lang = it.lang; rec.interimResults = true; rec.maxAlternatives = 3; listening = true; $("#mic").classList.add("on"); $("#heard").textContent = "듣는 중…";
+        let finalText = "";
+        rec.onresult = (e) => { let interim = ""; for (const r of e.results) { if (r.isFinal) { let bestAlt = r[0].transcript, bestPct = -1; for (const alt of r) { const pct = similarity(alt.transcript, it.target); if (pct > bestPct) { bestPct = pct; bestAlt = alt.transcript; } } finalText += bestAlt; } else interim += r[0].transcript; } $("#heard").innerHTML = `들린 것: <b>${esc(finalText || interim)}</b>`; };
+        rec.onerror = (e) => { $("#heard").textContent = e.error === "not-allowed" ? "마이크 권한이 필요합니다." : `인식 오류: ${e.error}`; listening = false; $("#mic")?.classList.remove("on"); };
+        rec.onend = () => { listening = false; if (finalText || left <= 0) { results.push({ heard: finalText, pct: similarity(finalText, it.target) }); i++; setTimeout(draw, 500); } else { $("#mic")?.classList.remove("on"); if ($("#heard") && !$("#heard").textContent.includes("오류") && !$("#heard").textContent.includes("권한")) $("#heard").textContent = "아무것도 들리지 않았습니다. 다시 눌러 읽어 주세요."; } };
+        try { rec.start(); } catch (e) { $("#heard").textContent = "마이크를 시작할 수 없습니다: " + e.message; listening = false; }
+      });
+      $("#skip")?.addEventListener("click", () => { startTimer(); if (rec) { try { rec.abort(); } catch { /* */ } } results.push({ heard: "", pct: 0 }); i++; draw(); });
+      main.querySelectorAll("[data-self]").forEach((b) => b.addEventListener("click", () => { startTimer(); results.push({ heard: "(직접 채점)", pct: +b.dataset.self }); i++; draw(); }));
+    };
+    draw();
+  }
+
+  // ---------- 예배 전 화면 (screen mode) ----------
+  async function viewScreen(id) {
+    const s = await loadSermon(id); if (!s) { main.innerHTML = `<p class="muted">자료 없음</p>`; return; }
+    const slides = [];
+    (s.greeting?.zh || []).forEach((z, i) => slides.push({ lbl: "本周问候 · 이번 주 인사 — 옆 사람과 서로의 말로", zh: z, py: toPinyin(z), ko: s.greeting.ko[i] || "" }));
+    const verse = (s.video?.beats || []).find((b) => b.kind === "verse") || (s.scripture.verses[0] && { zh: s.scripture.verses[0].zh, ko: s.scripture.verses[0].ko, pinyin: s.scripture.verses[0].pinyin });
+    if (verse) slides.push({ lbl: `本周金句 · 이번 주 말씀 — ${s.scripture.ref_zh} · ${s.scripture.ref_ko}`, zh: verse.zh, py: verse.pinyin || toPinyin(verse.zh), ko: verse.ko });
+    if (s.one_line) slides.push({ lbl: "本周讲道 · 이번 주 설교 한 문장", zh: s.one_line.zh, py: toPinyin(s.one_line.zh), ko: s.one_line.ko });
+    let i = 0;
+    const draw = () => { const c = slides[i]; main.innerHTML = `<div class="screen-stage" id="stage" tabindex="0">
+        <div class="hint">클릭·→ 다음 · ← 이전 · F 전체화면 · Esc 나가기${s.slideMeta ? ` · <a href="${esc(s.slideMeta)}" download style="color:#e8b44c">PPTX 내려받기</a>` : ""}</div>
+        <div class="dots">${i + 1} / ${slides.length}</div>
+        <div><span class="lbl">${esc(c.lbl)}</span><div class="zh" lang="zh">${esc(c.zh)}</div><span class="py">${esc(c.py)}</span><div class="ko">${esc(c.ko)}</div></div>
+        <div class="foot">${esc(s.church.zh)} · ${esc(s.church.ko)} · ${fmtDate(s.date)} · ${esc(s.title.zh || "")} / ${esc(s.title.ko)}</div></div>`;
+      $("#stage").focus(); };
+    draw();
+    const nav = (d) => { i = (i + d + slides.length) % slides.length; draw(); };
+    main.onclick = (e) => { if (!e.target.closest("a")) nav(1); };
+    const key = (e) => { if (!document.body.classList.contains("screen")) { document.removeEventListener("keydown", key); return; }
+      if (e.key === "ArrowRight" || e.key === " ") nav(1); else if (e.key === "ArrowLeft") nav(-1); else if (e.key.toLowerCase() === "f") document.documentElement.requestFullscreen?.(); else if (e.key === "Escape" && !document.fullscreenElement) location.hash = `#/s/${id}`; };
+    document.addEventListener("keydown", key);
   }
 
   function download(name, text) {

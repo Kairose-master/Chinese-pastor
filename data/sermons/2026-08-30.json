@@ -844,7 +844,14 @@
    "example_ko": "나는 심었고 아볼로는 물을 주었으되 오직 하나님께서 자라나게 하셨나니.",
    "note_ko": "씨앗이나 식물을 심는다는 뜻으로, 영적인 씨앗을 뿌릴 때 자주 사용됩니다.",
    "video": true,
-   "pinyin": "zāi zhòng"
+   "pinyin": "zāi zhòng",
+   "bridge": {
+    "hanja": "栽種",
+    "ko_reading": "재종",
+    "ko_word": "재배(栽培)",
+    "relation": "similar",
+    "note_ko": "한국어 '재배(栽培)'의 '재'와 같은 한자를 씀."
+   }
   },
   {
    "zh": "浇灌",
@@ -855,7 +862,14 @@
    "example_ko": "나는 심었고 아볼로는 물을 주었으되 오직 하나님께서 자라나게 하셨나니.",
    "note_ko": "식물에 물을 주는 행위로, 성도를 양육하고 돌보는 것을 비유합니다.",
    "video": true,
-   "pinyin": "jiāo guàn"
+   "pinyin": "jiāo guàn",
+   "bridge": {
+    "hanja": "澆灌",
+    "ko_reading": "교관",
+    "ko_word": "관수(灌水)",
+    "relation": "similar",
+    "note_ko": "'관수(灌水)'의 '관'과 같은 한자를 공유함."
+   }
   },
   {
    "zh": "盼望",
@@ -866,7 +880,14 @@
    "example_ko": "이것이 성경이 말하는 소망입니다.",
    "note_ko": "기독교의 3대 덕목(믿음, 소망, 사랑) 중 '소망'에 해당하는 단어입니다.",
    "video": true,
-   "pinyin": "pàn wàng"
+   "pinyin": "pàn wàng",
+   "bridge": {
+    "hanja": "盼望",
+    "ko_reading": "반망",
+    "ko_word": "소망(所望)",
+    "relation": "similar",
+    "note_ko": "'소망(所望)'의 '망'을 공유하며 뜻이 같음."
+   }
   },
   {
    "zh": "理所当然",
@@ -877,7 +898,14 @@
    "example_ko": "당연하게 여겼던 자리가 잠시 비었다가 다시 채워지니 그 사람이 얼마나 소중한지 새삼 깨닫고...",
    "note_ko": "이치상 마땅히 그러하다는 뜻의 매우 자주 쓰이는 사자성어입니다.",
    "video": true,
-   "pinyin": "lǐ suǒ dāng rán"
+   "pinyin": "lǐ suǒ dāng rán",
+   "bridge": {
+    "hanja": "理所當然",
+    "ko_reading": "이소당연",
+    "ko_word": "당연(當然)하다",
+    "relation": "similar",
+    "note_ko": "한국어 '당연(當然)'이 포함된 사자성어."
+   }
   },
   {
    "zh": "宝贵",
@@ -888,7 +916,14 @@
    "example_ko": "...그 사람이 얼마나 소중한지 새삼 깨닫고, 함께하는 평범한 일상도 감사하게 느껴집니다.",
    "note_ko": "사람이나 가치, 시간 등이 매우 귀중할 때 사용합니다.",
    "video": true,
-   "pinyin": "bǎo guì"
+   "pinyin": "bǎo guì",
+   "bridge": {
+    "hanja": "寶貴",
+    "ko_reading": "보귀",
+    "ko_word": "귀중(貴重)하다",
+    "relation": "similar",
+    "note_ko": "'보배(寶)'와 '귀중(貴)'의 한자가 합쳐진 단어."
+   }
   },
   {
    "zh": "同心合意",
@@ -899,7 +934,14 @@
    "example_ko": "예수님께서 승천하신 뒤 제자들은 예루살렘의 다락방에 모여 마음을 같이하여 기도했습니다.",
    "note_ko": "교회에서 성도들이 한마음으로 기도하거나 사역할 때 쓰는 표현입니다.",
    "pinyin": "tóng xīn hé yì",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "同心合意",
+    "ko_reading": "동심합의",
+    "ko_word": "합심(合心)",
+    "relation": "similar",
+    "note_ko": "'동심(同心)'과 '합의(合意)'가 결합된 사자성어."
+   }
   },
   {
    "zh": "圣灵",
@@ -910,7 +952,14 @@
    "example_ko": "아직 성령이 임하지 않았고 삼천 명이 회개하지도 않았지만...",
    "note_ko": "기독교 삼위일체의 제3위이신 성령님을 뜻합니다.",
    "pinyin": "shèng líng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "聖靈",
+    "ko_reading": "성령",
+    "ko_word": "성령(聖靈)",
+    "relation": "same",
+    "note_ko": "한국어 기독교 용어 '성령(聖靈)'과 완전히 같음."
+   }
   },
   {
    "zh": "悔改",
@@ -921,7 +970,14 @@
    "example_ko": "아직 성령이 임하지 않았고 삼천 명이 회개하지도 않았지만...",
    "note_ko": "죄를 뉘우치고 하나님께로 돌이키는 신앙적 행위를 말합니다.",
    "pinyin": "huǐ gǎi",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "悔改",
+    "ko_reading": "회개",
+    "ko_word": "회개(悔改)",
+    "relation": "same",
+    "note_ko": "한국어 '회개(悔改)'와 한자가 완전히 같음."
+   }
   },
   {
    "zh": "填补",
@@ -932,7 +988,14 @@
    "example_ko": "지난주 우리는 ‘빈자리를 먼저 채우는 사람들’이라는 제목으로 말씀을 나누었습니다.",
    "note_ko": "빈자리나 부족한 부분을 채워 넣는다는 뜻입니다.",
    "pinyin": "tián bǔ",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "填補",
+    "ko_reading": "전보",
+    "ko_word": "보충(補充)",
+    "relation": "similar",
+    "note_ko": "'보충(補充)'의 '보'를 공유하며 뜻이 비슷함."
+   }
   },
   {
    "zh": "恩赐",
@@ -943,7 +1006,14 @@
    "example_ko": "역할과 은사는 달랐지만 목적은 하나였습니다. 모두 하나님의 밭을 위해 일했습니다.",
    "note_ko": "하나님께서 주신 특별한 재능이나 선물을 뜻하는 기독교 용어입니다.",
    "pinyin": "ēn cì",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "恩賜",
+    "ko_reading": "은사",
+    "ko_word": "은사(恩賜)",
+    "relation": "same",
+    "note_ko": "기독교 용어 '은사(恩賜)'와 한자가 완전히 같음."
+   }
   },
   {
    "zh": "灰心",
@@ -954,7 +1024,14 @@
    "example_ko": "그래서 우리는 최선을 다해 씨를 심으면서도 교만하지 않고, 열매가 빨리 보이지 않는다고 지나치게 낙심하지도 않습니다.",
    "note_ko": "기대하던 일이 이루어지지 않아 마음이 꺾이는 상태를 말합니다.",
    "pinyin": "huī xīn",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "灰心",
+    "ko_reading": "회심",
+    "ko_word": "낙심(落心)",
+    "relation": "similar",
+    "note_ko": "마음(心)이 재(灰)처럼 식어 '낙심'함을 뜻함."
+   }
   },
   {
    "zh": "承担",
@@ -965,7 +1042,14 @@
    "example_ko": "그러나 모든 결과를 우리 능력으로 설명하려 하면, 잘될 때는 교만하고 잘되지 않을 때는 모든 책임을 짊어진 채 절망합니다.",
    "note_ko": "책임이나 임무, 비용 등을 떠맡는다는 뜻입니다.",
    "pinyin": "chéng dān",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "承擔",
+    "ko_reading": "승담",
+    "ko_word": "담당(擔當)",
+    "relation": "similar",
+    "note_ko": "'담당(擔當)'의 '담'을 공유하며 책임진다는 뜻."
+   }
   },
   {
    "zh": "绝望",
@@ -976,7 +1060,14 @@
    "example_ko": "그러나 모든 결과를 우리 능력으로 설명하려 하면, 잘될 때는 교만하고 잘되지 않을 때는 모든 책임을 짊어진 채 절망합니다.",
    "note_ko": "희망이 끊어진 상태를 나타냅니다.",
    "pinyin": "jué wàng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "絕望",
+    "ko_reading": "절망",
+    "ko_word": "절망(絕望)",
+    "relation": "same",
+    "note_ko": "한국어 '절망(絕望)'과 한자가 완전히 같음."
+   }
   },
   {
    "zh": "徒然",
@@ -987,7 +1078,14 @@
    "example_ko": "그렇다면 그 수고는 헛된 것일까요? 그렇지 않습니다.",
    "note_ko": "노력이나 수고가 아무런 보람이나 결과 없이 헛됨을 의미합니다.",
    "pinyin": "tú rán",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "徒然",
+    "ko_reading": "도연",
+    "ko_word": "도연(徒然)하다",
+    "relation": "same",
+    "note_ko": "한국어 '도연(徒然)하다'와 같으나 주로 문어체임."
+   }
   },
   {
    "zh": "焦急",
@@ -998,7 +1096,14 @@
    "example_ko": "그러므로 우리가 원하는 속도로 자라지 않는다고 조급해하거나...",
    "note_ko": "마음이 몹시 급하고 불안한 상태를 나타냅니다.",
    "pinyin": "jiāo jí",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "焦急",
+    "ko_reading": "초급",
+    "ko_word": "초조(焦燥)",
+    "relation": "similar",
+    "note_ko": "'초조(焦燥)'의 '초'와 '조급(躁急)'의 '급' 결합."
+   }
   },
   {
    "zh": "恩典",
@@ -1009,7 +1114,14 @@
    "example_ko": "감리교회는 하나님께서 우리가 깨닫기 전부터 먼저 일하시는 은혜를 중요하게 고백합니다. 우리는 그것을 ‘선행은총’이라고 부릅니다.",
    "note_ko": "하나님께서 값없이 베풀어 주시는 사랑과 호의를 뜻합니다.",
    "pinyin": "ēn diǎn",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "恩典",
+    "ko_reading": "은전",
+    "ko_word": "은혜(恩惠)",
+    "relation": "similar",
+    "note_ko": "'은혜(恩惠)'의 '은'을 공유하며 뜻이 같음."
+   }
   },
   {
    "zh": "孤单",
@@ -1020,7 +1132,14 @@
    "example_ko": "그는 새오름교회라는 이름도 들어 보지 못했고 우리도 그의 얼굴을 모르지만, 하나님은 이미 그 형편과 외로움과 필요를 아십니다.",
    "note_ko": "혼자 있어서 쓸쓸하고 외로운 감정을 표현합니다.",
    "pinyin": "gū dān",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "孤單",
+    "ko_reading": "고단",
+    "ko_word": "고독(孤獨)",
+    "relation": "similar",
+    "note_ko": "'고독(孤獨)'의 '고'를 공유하며 외롭다는 뜻."
+   }
   },
   {
    "zh": "处境",
@@ -1031,7 +1150,14 @@
    "example_ko": "그는 새오름교회라는 이름도 들어 보지 못했고 우리도 그의 얼굴을 모르지만, 하나님은 이미 그 형편과 외로움과 필요를 아십니다.",
    "note_ko": "주로 어렵거나 불리한 상황, 환경을 가리킬 때 씁니다.",
    "pinyin": "chǔ jìng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "處境",
+    "ko_reading": "처경",
+    "ko_word": "처지(處地)",
+    "relation": "similar",
+    "note_ko": "'처지(處地)'의 '처'와 '환경(環境)'의 '경' 결합."
+   }
   },
   {
    "zh": "催促",
@@ -1042,7 +1168,14 @@
    "example_ko": "서툰 한국어를 재촉하지 않고 천천히 들어 줄 수도 있습니다.",
    "note_ko": "어떤 일을 빨리 하라고 다그치는 것을 의미합니다.",
    "pinyin": "cuī cù",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "催促",
+    "ko_reading": "최촉",
+    "ko_word": "독촉(督促)",
+    "relation": "similar",
+    "note_ko": "'독촉(督促)'의 '촉'을 공유하며 재촉함을 뜻함."
+   }
   },
   {
    "zh": "宣教",
@@ -1053,7 +1186,14 @@
    "example_ko": "하나님의 손에 맡기고 축복하여 보내는 것도 사랑이며 선교입니다.",
    "note_ko": "복음을 전파하는 사역을 뜻하는 기독교 핵심 용어입니다.",
    "pinyin": "xuān jiào",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "宣敎",
+    "ko_reading": "선교",
+    "ko_word": "선교(宣敎)",
+    "relation": "same",
+    "note_ko": "기독교 용어 '선교(宣敎)'와 한자가 완전히 같음."
+   }
   },
   {
    "zh": "门徒",
@@ -1064,7 +1204,14 @@
    "example_ko": "우리가 바라는 것은 빈 의자가 채워지는 것만이 아니라 한 사람이 복음을 만나, 어디에 있든 예수님의 제자로 살아가는 것입니다.",
    "note_ko": "예수님의 가르침을 따르고 배우는 사람을 가리킵니다.",
    "pinyin": "mén tú",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "門徒",
+    "ko_reading": "문도",
+    "ko_word": "문도(門徒)",
+    "relation": "same",
+    "note_ko": "한국어 '문도(門徒)'와 같으나 보통 '제자'로 번역."
+   }
   },
   {
    "zh": "同工",
@@ -1075,7 +1222,14 @@
    "example_ko": "바울은 “우리는 하나님의 동역자들이요”라고 말합니다.",
    "note_ko": "하나님의 일을 함께 하는 사람들을 일컫는 교회 용어입니다.",
    "pinyin": "tóng gōng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "同工",
+    "ko_reading": "동공",
+    "ko_word": "동역자(同役者)",
+    "relation": "similar",
+    "note_ko": "기독교 용어 '동역자(同役者)'의 '동'을 공유함."
+   }
   },
   {
    "zh": "夸耀",
@@ -1086,7 +1240,14 @@
    "example_ko": "우리가 만든 결과를 자랑하지 않고 오직 자라게 하신 하나님께 모든 감사와 영광을 돌리기를 바랍니다.",
    "note_ko": "자신의 성과나 능력을 뽐내고 자랑하는 것을 뜻합니다.",
    "pinyin": "kuā yào",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "誇耀",
+    "ko_reading": "과요",
+    "ko_word": "과시(誇示)",
+    "relation": "similar",
+    "note_ko": "'과시(誇示)'의 '과'를 공유하며 자랑함을 뜻함."
+   }
   },
   {
    "zh": "荣耀",
@@ -1097,7 +1258,14 @@
    "example_ko": "우리가 만든 결과를 자랑하지 않고 오직 자라게 하신 하나님께 모든 감사와 영광을 돌리기를 바랍니다.",
    "note_ko": "하나님께 돌리는 찬양과 빛나는 영예를 의미합니다.",
    "pinyin": "róng yào",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "榮耀",
+    "ko_reading": "영요",
+    "ko_word": "영광(榮光)",
+    "relation": "similar",
+    "note_ko": "'영광(榮光)'의 '영'을 공유하며 뜻이 같음."
+   }
   }
  ],
  "video": {

@@ -814,7 +814,14 @@
    "example_ko": "2026년 8월 23일 주일예배에 오신 여러분을 주님의 이름으로 환영합니다.",
    "note_ko": "기독교에서 '예배'를 뜻하는 가장 보편적인 단어입니다.",
    "video": true,
-   "pinyin": "lǐ bài"
+   "pinyin": "lǐ bài",
+   "bridge": {
+    "hanja": "禮拜",
+    "ko_reading": "예배",
+    "ko_word": "예배(禮拜)",
+    "relation": "same",
+    "note_ko": "한국어 ‘예배(禮拜)’와 같은 한자어, 간체자만 다름."
+   }
   },
   {
    "zh": "不知不觉",
@@ -825,7 +832,14 @@
    "example_ko": "어느덧 8월도 마지막 주를 향해 가고 있습니다.",
    "note_ko": "시간이 빠르게 지나감을 표현할 때 자주 쓰이는 사자성어입니다.",
    "video": true,
-   "pinyin": "bù zhī bù jué"
+   "pinyin": "bù zhī bù jué",
+   "bridge": {
+    "hanja": "不知不覺",
+    "ko_reading": "부지불각",
+    "ko_word": "부지불식간(不知不識間) / 어느덧",
+    "relation": "similar",
+    "note_ko": "한국어 ‘부지불식(不知不識)’과 유사한 사자성어."
+   }
   },
   {
    "zh": "预备",
@@ -836,7 +850,14 @@
    "example_ko": "우리는 빈자리를 보고 있지만 하나님께서는 준비된 자리를 보고 계실 수 있습니다.",
    "note_ko": "신앙적 문맥에서 하나님이 '예비하시다'라고 할 때 자주 쓰입니다.",
    "video": true,
-   "pinyin": "yù bèi"
+   "pinyin": "yù bèi",
+   "bridge": {
+    "hanja": "預備",
+    "ko_reading": "예비",
+    "ko_word": "예비(預備) / 준비(準備)",
+    "relation": "same",
+    "note_ko": "한국어 ‘예비(預備)’와 완전히 같은 한자어."
+   }
   },
   {
    "zh": "应许",
@@ -847,7 +868,14 @@
    "example_ko": "예수님께서는 제자들에게 분명한 약속을 남기셨습니다.",
    "note_ko": "일반적인 약속(答应/承诺)과 달리, 성경에서 하나님의 '언약/약속'을 뜻하는 전문 용어입니다.",
    "video": true,
-   "pinyin": "yīng xǔ"
+   "pinyin": "yīng xǔ",
+   "bridge": {
+    "hanja": "應許",
+    "ko_reading": "응허",
+    "ko_word": "약속(約束) / 언약(言約)",
+    "relation": "different",
+    "note_ko": "한자는 ‘응허’로 읽으나, 뜻은 ‘약속’이나 ‘언약’임."
+   }
   },
   {
    "zh": "复兴",
@@ -858,7 +886,14 @@
    "example_ko": "얼마나 놀라운 부흥입니까?",
    "note_ko": "교회의 영적 부흥이나 국가의 부흥을 말할 때 모두 쓰입니다.",
    "video": true,
-   "pinyin": "fù xīng"
+   "pinyin": "fù xīng",
+   "bridge": {
+    "hanja": "復興",
+    "ko_reading": "부흥",
+    "ko_word": "부흥(復興)",
+    "relation": "same",
+    "note_ko": "한국어 ‘부흥(復興)’과 같은 한자어, 간체자만 다름."
+   }
   },
   {
    "zh": "熟悉",
@@ -869,7 +904,14 @@
    "example_ko": "예배를 마치고 함께 밥을 먹던 사람들도 줄어들고, 평소 보이던 얼굴들도 한동안 보이지 않습니다.",
    "note_ko": "사람이나 환경에 대해 '익숙하다'고 할 때 널리 쓰입니다.",
    "pinyin": "shú xī",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "熟悉",
+    "ko_reading": "숙실",
+    "ko_word": "익숙하다 / 숙지(熟知)하다",
+    "relation": "similar",
+    "note_ko": "‘숙(熟)’자가 공통으로 쓰여 ‘익숙하다’는 뜻을 가짐."
+   }
   },
   {
    "zh": "升天",
@@ -880,7 +922,14 @@
    "example_ko": "예수님께서 부활하신 후 제자들에게 나타나셨고, 마침내 감람산에서 하늘로 올라가신 직후의 이야기입니다.",
    "note_ko": "예수님의 승천을 표현하는 신학 용어입니다.",
    "pinyin": "shēng tiān",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "升天",
+    "ko_reading": "승천",
+    "ko_word": "승천(昇天)",
+    "relation": "similar",
+    "note_ko": "한국어 ‘승천(昇天)’과 뜻과 음이 같음."
+   }
   },
   {
    "zh": "困惑",
@@ -891,7 +940,14 @@
    "example_ko": "생각해보면 제자들의 입장에서는 굉장히 이상한 순간이었을 것입니다.",
    "note_ko": "이해하기 어려워 어찌할 바를 모르는 심리 상태를 나타냅니다.",
    "pinyin": "kùn huò",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "困惑",
+    "ko_reading": "곤혹",
+    "ko_word": "곤혹(困惑)스럽다 / 당혹(當惑)스럽다",
+    "relation": "same",
+    "note_ko": "한국어 ‘곤혹(困惑)’과 완전히 같은 한자어."
+   }
   },
   {
    "zh": "圣灵",
@@ -902,7 +958,14 @@
    "example_ko": "예수님께서 약속하신 성령을 기다리며 함께 기도했습니다.",
    "note_ko": "삼위일체 하나님의 제3위이신 성령님을 뜻합니다.",
    "pinyin": "shèng líng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "聖靈",
+    "ko_reading": "성령",
+    "ko_word": "성령(聖靈)",
+    "relation": "same",
+    "note_ko": "한국어 ‘성령(聖靈)’과 같은 한자어, 간체자만 다름."
+   }
   },
   {
    "zh": "使命",
@@ -913,7 +976,14 @@
    "example_ko": "예수님께서는 제자들에게 아주 큰 사명을 주셨습니다.",
    "note_ko": "한자어 '사명(使命)'과 동일한 한자를 사용합니다.",
    "pinyin": "shǐ mìng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "使命",
+    "ko_reading": "사명",
+    "ko_word": "사명(使命)",
+    "relation": "same",
+    "note_ko": "한국어 ‘사명(使命)’과 완전히 같은 한자어."
+   }
   },
   {
    "zh": "见证人",
@@ -924,7 +994,14 @@
    "example_ko": "예루살렘에서 시작하여 온 유대와 사마리아와 땅 끝까지 가서 예수님의 증인이 되라는 것입니다.",
    "note_ko": "기독교에서 복음을 전하는 '증인'을 뜻할 때 자주 쓰입니다.",
    "pinyin": "jiàn zhèng rén",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "見證人",
+    "ko_reading": "견증인",
+    "ko_word": "증인(證人)",
+    "relation": "similar",
+    "note_ko": "한국어 ‘증인(證人)’에 ‘볼 견(見)’이 추가된 형태."
+   }
   },
   {
    "zh": "惊叹",
@@ -935,7 +1012,14 @@
    "example_ko": "지금 우리가 알고 있는 기독교 역사를 생각하면 정말 놀라운 말씀입니다.",
    "note_ko": "놀라움과 감탄이 섞인 감정을 표현합니다.",
    "pinyin": "jīng tàn",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "驚嘆",
+    "ko_reading": "경탄",
+    "ko_word": "경탄(驚歎)하다 / 감탄(感歎)하다",
+    "relation": "same",
+    "note_ko": "한국어 ‘경탄(驚歎)’과 같은 한자어, 간체자만 다름."
+   }
   },
   {
    "zh": "宏伟",
@@ -946,7 +1030,14 @@
    "example_ko": "거대한 건물이 세워진 뒤에 시작된 것도 아닙니다.",
    "note_ko": "건물이나 계획의 규모가 매우 클 때 사용합니다.",
    "pinyin": "hóng wěi",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "宏偉",
+    "ko_reading": "굉위",
+    "ko_word": "웅장(雄壯)하다 / 거대(巨大)하다",
+    "relation": "different",
+    "note_ko": "한자는 ‘굉위’로 읽으며, ‘웅장하다’는 뜻으로 쓰임."
+   }
   },
   {
    "zh": "宣教",
@@ -957,7 +1048,14 @@
    "example_ko": "선교 계획부터 세운 것도 아니고",
    "note_ko": "기독교의 '선교'를 뜻하는 단어입니다.",
    "pinyin": "xuān jiào",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "宣教",
+    "ko_reading": "선교",
+    "ko_word": "선교(宣敎)",
+    "relation": "same",
+    "note_ko": "한국어 ‘선교(宣敎)’와 완전히 같은 한자어."
+   }
   },
   {
    "zh": "默想",
@@ -968,7 +1066,14 @@
    "example_ko": "저는 이 장면을 묵상하면서 이런 생각이 들었습니다.",
    "note_ko": "말씀을 깊이 생각하는 '묵상(QT)'을 의미합니다.",
    "pinyin": "mò xiǎng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "默想",
+    "ko_reading": "묵상",
+    "ko_word": "묵상(默想)",
+    "relation": "same",
+    "note_ko": "한국어 ‘묵상(默想)’과 완전히 같은 한자어."
+   }
   },
   {
    "zh": "悔改",
@@ -979,7 +1084,14 @@
    "example_ko": "성령께서 임하시고, 베드로가 말씀을 전하고, 하루에 삼천 명이 회개하여 세례를 받습니다.",
    "note_ko": "죄를 뉘우치고 돌이키는 기독교 핵심 용어입니다.",
    "pinyin": "huǐ gǎi",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "悔改",
+    "ko_reading": "회개",
+    "ko_word": "회개(悔改)",
+    "relation": "same",
+    "note_ko": "한국어 ‘회개(悔改)’와 완전히 같은 한자어."
+   }
   },
   {
    "zh": "处境",
@@ -990,7 +1102,14 @@
    "example_ko": "“사람이 없다”라고 말하면 지금의 상황이 마지막처럼 들립니다.",
    "note_ko": "주로 어렵거나 복잡한 환경, 상황을 뜻합니다.",
    "pinyin": "chǔ jìng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "處境",
+    "ko_reading": "처경",
+    "ko_word": "처지(處地) / 상황(狀況)",
+    "relation": "similar",
+    "note_ko": "한국어 ‘처지(處地)’와 비슷하게 ‘처할 처(處)’를 씀."
+   }
   },
   {
    "zh": "乐观",
@@ -1001,7 +1120,14 @@
    "example_ko": "물론 이것을 단순히 긍정적으로 생각하자는 의미로 말씀드리는 것은 아닙니다.",
    "note_ko": "상황을 밝게 보는 태도를 말합니다.",
    "pinyin": "lè guān",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "樂觀",
+    "ko_reading": "낙관",
+    "ko_word": "낙관(樂觀)적이다",
+    "relation": "same",
+    "note_ko": "한국어 ‘낙관(樂觀)’과 같은 한자어, 간체자만 다름."
+   }
   },
   {
    "zh": "保证",
@@ -1012,7 +1138,14 @@
    "example_ko": "새 학기가 시작된다고 해서 반드시 많은 사람들이 우리 교회에 올 것이라고 장담할 수도 없습니다.",
    "note_ko": "어떤 일이 틀림없음을 책임진다는 뜻입니다.",
    "pinyin": "bǎo zhèng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "保證",
+    "ko_reading": "보증",
+    "ko_word": "보장(保障)하다 / 보증(保證)하다",
+    "relation": "same",
+    "note_ko": "한국어 ‘보증(保證)’과 같으며 ‘보장하다’로도 쓰임."
+   }
   },
   {
    "zh": "烦恼",
@@ -1023,7 +1156,14 @@
    "example_ko": "한국어를 얼마나 할 수 있는지도 모릅니다. 어떤 고민을 가지고 있는지도 모릅니다.",
    "note_ko": "마음속의 걱정거리나 스트레스를 의미합니다.",
    "pinyin": "fán nǎo",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "煩惱",
+    "ko_reading": "번뇌",
+    "ko_word": "번뇌(煩惱) / 고민(苦悶)",
+    "relation": "same",
+    "note_ko": "한국어 ‘번뇌(煩惱)’와 같으나 일상에선 ‘고민’에 해당."
+   }
   },
   {
    "zh": "孤单",
@@ -1034,7 +1174,14 @@
    "example_ko": "혹은 겉으로는 아무 문제가 없어 보이지만 낯선 나라에서 외로움을 견디고 있는 학생일 수도 있습니다.",
    "note_ko": "홀로 있어서 쓸쓸한 감정을 나타냅니다.",
    "pinyin": "gū dān",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "孤單",
+    "ko_reading": "고단",
+    "ko_word": "고독(孤獨)하다 / 외롭다",
+    "relation": "similar",
+    "note_ko": "‘외로울 고(孤)’가 공통으로 쓰여 ‘고독하다’는 뜻."
+   }
   },
   {
    "zh": "仰望",
@@ -1045,7 +1192,14 @@
    "example_ko": "중요한 것은 우리가 얼마나 큰가가 아니라, 우리가 누구를 바라보고 있는가입니다.",
    "note_ko": "신앙적으로 주님을 '바라보다'라고 할 때 자주 쓰입니다.",
    "pinyin": "yǎng wàng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "仰望",
+    "ko_reading": "앙망",
+    "ko_word": "앙망(仰望)하다 / 우러러보다",
+    "relation": "same",
+    "note_ko": "한국어 ‘앙망(仰望)’과 완전히 같은 한자어."
+   }
   },
   {
    "zh": "虚度",
@@ -1056,7 +1210,14 @@
    "example_ko": "그들에게 먼저 주어진 것은 기다리는 시간이었습니다. 그러나 그들은 그 시간을 허비하지 않았습니다.",
    "note_ko": "시간을 의미 없이 낭비할 때 사용합니다.",
    "pinyin": "xū dù",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "虛度",
+    "ko_reading": "허도",
+    "ko_word": "허비(虛費)하다 / 헛되이 보내다",
+    "relation": "similar",
+    "note_ko": "‘빌 허(虛)’를 써서 시간을 ‘헛되이 보낸다’는 뜻."
+   }
   },
   {
    "zh": "敬拜",
@@ -1067,7 +1228,14 @@
    "example_ko": "“그리고 사람이 많든 적든, 오늘 이 자리에서 주님을 예배하겠습니다.”",
    "note_ko": "하나님을 찬양하고 예배하는 행위를 뜻합니다.",
    "pinyin": "jìng bài",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "敬拜",
+    "ko_reading": "경배",
+    "ko_word": "경배(敬拜)하다 / 예배(禮拜)하다",
+    "relation": "same",
+    "note_ko": "한국어 ‘경배(敬拜)’와 완전히 같은 한자어."
+   }
   }
  ],
  "video": {

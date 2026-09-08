@@ -857,7 +857,14 @@
    "example_ko": "우린 모두 보냄받은 사람들입니다.",
    "note_ko": "기독교에서 '파송하다'라는 의미로 자주 쓰입니다. 한자어 파송(派送)과 다름에 주의하세요.",
    "video": true,
-   "pinyin": "chāi qiǎn"
+   "pinyin": "chāi qiǎn",
+   "bridge": {
+    "hanja": "差遣",
+    "ko_reading": "차견",
+    "ko_word": "파견(派遣)",
+    "relation": "similar",
+    "note_ko": "한국어 '파견(派遣)'과 의미와 쓰임이 비슷합니다."
+   }
   },
   {
    "zh": "栽培",
@@ -868,7 +875,14 @@
    "example_ko": "사람이 오지 않는 것도 어렵지만, 잘 키워서 내어 보내는 일은 그보다 더 어렵습니다.",
    "note_ko": "식물을 키울 때도 쓰지만, 사람을 교육하고 양육할 때 널리 쓰입니다.",
    "video": true,
-   "pinyin": "zāi péi"
+   "pinyin": "zāi péi",
+   "bridge": {
+    "hanja": "栽培",
+    "ko_reading": "재배",
+    "ko_word": "재배(栽培)",
+    "relation": "same",
+    "note_ko": "한국어 '재배(栽培)'와 동일한 한자어입니다."
+   }
   },
   {
    "zh": "禁食",
@@ -879,7 +893,14 @@
    "example_ko": "주를 섬겨 금식할 때에 성령이 이르시되 내가 불러 시키는 일을 위하여 바나바와 사울을 따로 세우라 하시니",
    "note_ko": "신앙적인 목적의 금식을 나타내는 필수 교회 용어입니다.",
    "video": true,
-   "pinyin": "jìn shí"
+   "pinyin": "jìn shí",
+   "bridge": {
+    "hanja": "禁食",
+    "ko_reading": "금식",
+    "ko_word": "금식(禁食)",
+    "relation": "same",
+    "note_ko": "한국어 '금식(禁食)'과 동일한 한자어입니다."
+   }
   },
   {
    "zh": "按手",
@@ -890,7 +911,14 @@
    "example_ko": "이에 금식하며 기도하고 두 사람에게 안수하여 보내니라.",
    "note_ko": "목사 안수나 파송 시 머리에 손을 얹고 기도하는 행위를 뜻합니다.",
    "video": true,
-   "pinyin": "àn shǒu"
+   "pinyin": "àn shǒu",
+   "bridge": {
+    "hanja": "按手",
+    "ko_reading": "안수",
+    "ko_word": "안수(按手)",
+    "relation": "same",
+    "note_ko": "기독교 용어 '안수(按手)'와 동일한 한자어입니다."
+   }
   },
   {
    "zh": "顺服",
@@ -901,7 +929,14 @@
    "example_ko": "그러니 우리에게 맡겨진 것은 성공이 아니라 순종입니다.",
    "note_ko": "성경에서 '순종'을 번역할 때 가장 많이 쓰이는 단어입니다.",
    "video": true,
-   "pinyin": "shùn fú"
+   "pinyin": "shùn fú",
+   "bridge": {
+    "hanja": "順服",
+    "ko_reading": "순복",
+    "ko_word": "순종(順從)",
+    "relation": "similar",
+    "note_ko": "'순종(順從)'과 '복종(服從)'을 합친 듯한 한자어입니다."
+   }
   },
   {
    "zh": "陆续",
@@ -912,7 +947,14 @@
    "example_ko": "방학을 맞아 중국에 갔던 청년들이 하나둘 돌아오고 있고, 또 어떤 청년들은 이번 학기를 끝으로 우리 곁을 떠나 돌아가게 됩니다.",
    "note_ko": "어떤 일이 끊이지 않고 계속 이어짐을 나타내는 HSK 5급 빈출 부사입니다.",
    "pinyin": "lù xù",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "陸續",
+    "ko_reading": "육속",
+    "ko_word": "계속(繼續)",
+    "relation": "different",
+    "note_ko": "한국어에선 낯설지만 '계속(繼續)'과 비슷한 의미입니다."
+   }
   },
   {
    "zh": "坦白",
@@ -923,7 +965,14 @@
    "example_ko": "솔직히 고백드리면, 저는 목회하면서 이 부분이 제일 어렵습니다.",
    "note_ko": "'坦白说(솔직히 말해서)'의 형태로 회화에서 매우 자주 쓰입니다.",
    "pinyin": "tǎn bái",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "坦白",
+    "ko_reading": "탄백",
+    "ko_word": "솔직(率直)",
+    "relation": "different",
+    "note_ko": "'평탄하고 희다'는 뜻에서 '솔직하다'로 쓰입니다."
+   }
   },
   {
    "zh": "踏实",
@@ -934,7 +983,14 @@
    "example_ko": "이 청년이 한 학기만 더 있어 주면 우리 교회가 얼마나 든든할까.",
    "note_ko": "마음이 안정되고 든든한 상태, 또는 일처리가 착실함을 뜻합니다.",
    "pinyin": "tà shí",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "踏實",
+    "ko_reading": "답실",
+    "ko_word": "안심(安心)",
+    "relation": "different",
+    "note_ko": "'현실을 딛다(踏實)'에서 '마음이 든든하다'로 파생되었습니다."
+   }
   },
   {
    "zh": "撒种",
@@ -945,7 +1001,14 @@
    "example_ko": "그리고 아직 열매가 보이지 않아도 소망으로 씨를 뿌리는 사람들이 되자.",
    "note_ko": "복음을 전하는 행위를 비유할 때 자주 쓰이는 성경적 표현입니다.",
    "pinyin": "sǎ zhǒng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "撒種",
+    "ko_reading": "살종",
+    "ko_word": "파종(播種)",
+    "relation": "similar",
+    "note_ko": "'씨를 뿌리다'는 뜻으로 '파종(播種)'과 유사합니다."
+   }
   },
   {
    "zh": "恩典",
@@ -956,7 +1019,14 @@
    "example_ko": "내가 잘나서 이 자리에 있는 것이 아니다. 나를 찾아와 주신 그 은혜 때문에 지금 내가 여기에 서 있는 것이다.",
    "note_ko": "기독교에서 말하는 '하나님의 은혜'를 뜻하는 가장 대표적인 단어입니다.",
    "pinyin": "ēn diǎn",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "恩典",
+    "ko_reading": "은전",
+    "ko_word": "은혜(恩惠)",
+    "relation": "similar",
+    "note_ko": "한국어 '은전(恩典)'과 같으나 주로 '은혜'로 번역됩니다."
+   }
   },
   {
    "zh": "嘱托",
@@ -967,7 +1037,14 @@
    "example_ko": "그리고 남아 있는 사람들을 위해 아주 긴 당부를 남깁니다. 누구를 곁에 두어야 하는지, 누구의 말을 들어야 하는지 이름까지 하나하나 적어 주면서 이렇게 말합니다. “어진 신하를 가까이하시고 소인을 멀리하십시오.”",
    "note_ko": "중요한 일을 남에게 부탁하거나 당부할 때 쓰는 고급 어휘입니다.",
    "pinyin": "zhǔ tuō",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "囑託",
+    "ko_reading": "촉탁",
+    "ko_word": "부탁(付託)",
+    "relation": "similar",
+    "note_ko": "한국어 '촉탁(囑託)'과 같으며 '부탁'의 의미로 쓰입니다."
+   }
   },
   {
    "zh": "宣教",
@@ -978,7 +1055,14 @@
    "example_ko": "놀랍게도 하나님께서는 세계를 향한 선교의 문을 예루살렘이 아니라 바로 이 교회를 통해 여셨습니다.",
    "note_ko": "교회에서 '선교'를 뜻하는 단어입니다. (전도는 传道라고 합니다)",
    "pinyin": "xuān jiào",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "宣敎",
+    "ko_reading": "선교",
+    "ko_word": "선교(宣敎)",
+    "relation": "same",
+    "note_ko": "기독교 용어 '선교(宣敎)'와 완전히 동일합니다."
+   }
   },
   {
    "zh": "澄清",
@@ -989,7 +1073,14 @@
    "example_ko": "여기서 한 가지 오해는 풀고 가겠습니다.",
    "note_ko": "오해나 사실관계를 맑고 분명하게 밝힐 때 사용합니다.",
    "pinyin": "chéng qīng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "澄清",
+    "ko_reading": "징청",
+    "ko_word": "해명(解明)",
+    "relation": "different",
+    "note_ko": "'맑게 하다(澄清)'는 뜻에서 '해명하다'로 쓰입니다."
+   }
   },
   {
    "zh": "武断",
@@ -1000,7 +1091,14 @@
    "example_ko": "성경이 그의 출신지를 말해 주지 않아 단정할 수는 없지만, 피부색과 관련된 별칭이었을 것으로 보는 이들이 많습니다.",
    "note_ko": "근거 없이 함부로 판단하거나 결론을 내리는 태도를 뜻합니다.",
    "pinyin": "wǔ duàn",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "武斷",
+    "ko_reading": "무단",
+    "ko_word": "독단(獨斷)",
+    "relation": "similar",
+    "note_ko": "한국어 '무단(武斷)'과 같으며 독단적이라는 뜻입니다."
+   }
   },
   {
    "zh": "逼迫",
@@ -1011,7 +1109,14 @@
    "example_ko": "얼마 전까지 교회를 잡아 죽이겠다고 서슬 퍼렇게 돌아다니던 사람입니다.",
    "note_ko": "성경에서 신앙적 '박해'를 뜻할 때 주로 이 단어를 씁니다.",
    "pinyin": "bī pò",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "逼迫",
+    "ko_reading": "핍박",
+    "ko_word": "핍박(逼迫)",
+    "relation": "same",
+    "note_ko": "한국어 '핍박(逼迫)'과 한자와 뜻이 완전히 같습니다."
+   }
   },
   {
    "zh": "敬拜",
@@ -1022,7 +1127,14 @@
    "example_ko": "즉 이들은 예배를 드리고 있었던 것입니다.",
    "note_ko": "예배(礼拜)와 함께 쓰이며, 하나님을 찬양하고 경배하는 행위를 말합니다.",
    "pinyin": "jìng bài",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "敬拜",
+    "ko_reading": "경배",
+    "ko_word": "경배(敬拜)",
+    "relation": "same",
+    "note_ko": "한국어 '경배(敬拜)'와 동일한 한자어입니다."
+   }
   },
   {
    "zh": "旨意",
@@ -1033,7 +1145,14 @@
    "example_ko": "내 뜻을 잠시 내려놓고 하나님의 뜻을 여쭙는 자리인 것입니다.",
    "note_ko": "주로 '하나님의 뜻(神的旨意)'이라는 표현으로 교회에서 매일 쓰입니다.",
    "pinyin": "zhǐ yì",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "旨意",
+    "ko_reading": "지의",
+    "ko_word": "뜻",
+    "relation": "different",
+    "note_ko": "'취지(趣旨)'의 '지(旨)'를 써서 하나님의 뜻을 나타냅니다."
+   }
   },
   {
    "zh": "承担",
@@ -1044,7 +1163,14 @@
    "example_ko": "우리는 보통 중요한 일을 앞두면 먼저 계산을 합니다. 사람은 몇 명인지, 재정은 되는지, 누가 빠지면 그 자리를 누가 감당할 수 있는지.",
    "note_ko": "책임, 임무, 비용 등을 떠맡을 때 사용하는 HSK 5급 필수 동사입니다.",
    "pinyin": "chéng dān",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "承擔",
+    "ko_reading": "승담",
+    "ko_word": "담당(擔當)",
+    "relation": "similar",
+    "note_ko": "'담당(擔當)'과 비슷한 구조로 책임을 진다는 뜻입니다."
+   }
   },
   {
    "zh": "释放",
@@ -1055,7 +1181,14 @@
    "example_ko": "여기서 ‘보내니라’로 번역된 헬라어 아펠뤼산은 본래 ‘놓아주다, 풀어 주다’라는 뜻입니다. 묶여 있던 것을 풀어 준다는 말입니다.",
    "note_ko": "물리적으로 묶인 것을 풀거나, 감옥에서 석방할 때 씁니다.",
    "pinyin": "shì fàng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "釋放",
+    "ko_reading": "석방",
+    "ko_word": "석방(釋放)",
+    "relation": "same",
+    "note_ko": "한국어 '석방(釋放)'과 한자와 뜻이 완전히 같습니다."
+   }
   },
   {
    "zh": "悲壮",
@@ -1066,7 +1199,14 @@
    "example_ko": "참으로 비장하고 아름다운 말이지만, 동시에 참 무거운 말이기도 합니다. 실패하면 그것이 다 내 죄가 되는 것이니까요.",
    "note_ko": "슬프면서도 장엄하고 씩씩한 분위기를 묘사할 때 씁니다.",
    "pinyin": "bēi zhuàng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "悲壯",
+    "ko_reading": "비장",
+    "ko_word": "비장(悲壯)",
+    "relation": "same",
+    "note_ko": "한국어 '비장(悲壯)하다'와 동일한 한자어입니다."
+   }
   },
   {
    "zh": "沉重",
@@ -1077,7 +1217,14 @@
    "example_ko": "참으로 비장하고 아름다운 말이지만, 동시에 참 무거운 말이기도 합니다. 실패하면 그것이 다 내 죄가 되는 것이니까요.",
    "note_ko": "물건의 무게가 무겁거나, 마음/책임감 등이 무거울 때 모두 씁니다.",
    "pinyin": "chén zhòng",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "沉重",
+    "ko_reading": "침중",
+    "ko_word": "심각(深刻)",
+    "relation": "different",
+    "note_ko": "'침중(沉重)하다'는 한국어에서 잘 안 쓰나 유추 가능합니다."
+   }
   },
   {
    "zh": "浇灌",
@@ -1088,7 +1235,14 @@
    "example_ko": "“나는 심었고 아볼로는 물을 주었으되 오직 하나님께서 자라나게 하셨나니.”",
    "note_ko": "농사에서 물을 대는 것을 뜻하며, 고린도전서 3장 6절의 핵심 동사입니다.",
    "pinyin": "jiāo guàn",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "澆灌",
+    "ko_reading": "요관",
+    "ko_word": "관개(灌漑)",
+    "relation": "different",
+    "note_ko": "'관개(灌漑)'의 '관(灌)'을 써서 물을 댄다는 의미입니다."
+   }
   },
   {
    "zh": "守护",
@@ -1099,7 +1253,14 @@
    "example_ko": "누군가는 중국으로 보냄받습니다. 누군가는 가정으로 보냄받습니다. 누군가는 직장으로 보냄받습니다. 그리고 누군가는 이 교회를 지키는 자리로 보냄받습니다.",
    "note_ko": "소중한 것을 보호하고 지킬 때 사용하는 단어입니다.",
    "pinyin": "shǒu hù",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "守護",
+    "ko_reading": "수호",
+    "ko_word": "수호(守護)",
+    "relation": "same",
+    "note_ko": "한국어 '수호(守護)'와 한자와 뜻이 완전히 같습니다."
+   }
   },
   {
    "zh": "辛劳",
@@ -1110,7 +1271,14 @@
    "example_ko": "우리가 각자의 자리에서 드린 그 모든 수고를 하나님의 때에 열매로 맺어 주실 하나님을 신뢰하고 나아가는 우리 모두가 되기를 소망합니다.",
    "note_ko": "고생스럽게 일함, 또는 그 수고로움을 뜻하는 고급 어휘입니다.",
    "pinyin": "xīn láo",
-   "video": false
+   "video": false,
+   "bridge": {
+    "hanja": "辛勞",
+    "ko_reading": "신로",
+    "ko_word": "수고",
+    "relation": "different",
+    "note_ko": "'신고(辛苦)'와 '과로(過勞)'의 글자를 합친 의미입니다."
+   }
   }
  ],
  "video": {

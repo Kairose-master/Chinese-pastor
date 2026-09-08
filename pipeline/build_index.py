@@ -3,6 +3,7 @@
 import glob, json, os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 items = []
+daily = []
 for f in sorted(glob.glob(os.path.join(ROOT, "data", "sermons", "*.json"))):
     d = json.load(open(f, encoding="utf-8"))
     sid = d["id"]
@@ -13,7 +14,28 @@ for f in sorted(glob.glob(os.path.join(ROOT, "data", "sermons", "*.json"))):
         dur = json.load(open(script))["duration"] if os.path.exists(script) else None
         video = {"mp4": f"data/videos/{sid}.mp4", "vtt": f"data/videos/{sid}.vtt", "srt": f"data/videos/{sid}.srt",
                  "poster": f"data/videos/{sid}.poster.jpg", "duration": dur, "bytes": os.path.getsize(vid)}
-    items.append({"id": sid, "date": d["date"], "kind": d["kind"], "title": d["title"], "church": d["church"],
+    ko_vid = os.path.join(ROOT, "data", "videos", f"{sid}.ko.mp4")
+    video_ko = None
+    if os.path.exists(ko_vid):
+        script = os.path.join(ROOT, "data", "videos", f"{sid}.ko.script.json")
+        dur = json.load(open(script))["duration"] if os.path.exists(script) else None
+        video_ko = {"mp4": f"data/videos/{sid}.ko.mp4", "vtt": f"data/videos/{sid}.ko.vtt", "srt": f"data/videos/{sid}.ko.srt",
+                    "poster": f"data/videos/{sid}.ko.poster.jpg", "duration": dur, "bytes": os.path.getsize(ko_vid)}
+    rev_vid = os.path.join(ROOT, "data", "videos", f"{sid}.rev.mp4")
+    video_rev = None
+    if os.path.exists(rev_vid):
+        script = os.path.join(ROOT, "data", "videos", f"{sid}.rev.script.json")
+        dur = json.load(open(script))["duration"] if os.path.exists(script) else None
+        video_rev = {"mp4": f"data/videos/{sid}.rev.mp4", "vtt": f"data/videos/{sid}.rev.vtt", "srt": f"data/videos/{sid}.rev.srt",
+                     "poster": f"data/videos/{sid}.rev.poster.jpg", "duration": dur, "bytes": os.path.getsize(rev_vid)}
+    card = f"data/cards/{sid}.png" if os.path.exists(os.path.join(ROOT, "data", "cards", f"{sid}.png")) else None
+    for k in d.get("key_sentences") or []:
+        daily.append({"zh": k["zh"], "pinyin": k.get("pinyin", ""), "ko": k["ko"], "sid": sid, "kind": "key"})
+    if d.get("greeting"):
+        for z, k in zip(d["greeting"]["zh"], d["greeting"]["ko"]):
+            daily.append({"zh": z, "pinyin": "", "ko": k, "sid": sid, "kind": "greeting"})
+    slide = f"data/slides/{sid}.greeting.pptx" if os.path.exists(os.path.join(ROOT, "data", "slides", f"{sid}.greeting.pptx")) else None
+    items.append({"id": sid, "video_ko": video_ko, "video_rev": video_rev, "card": card, "slide": slide, "date": d["date"], "kind": d["kind"], "title": d["title"], "church": d["church"],
                   "ref_ko": d["scripture"]["ref_ko"], "ref_zh": d["scripture"]["ref_zh"], "one_line": d.get("one_line"),
                   "greeting": d.get("greeting"), "vocab_count": len(d.get("vocab") or []), "paragraphs": len(d["paragraphs"]),
                   "file": f"data/sermons/{sid}.json", "video": video})
@@ -26,7 +48,11 @@ missing = [
      "title": {"ko": "그리 아니하실지라도 감사하는 사람들", "zh": "即或不然也感恩的人们"}, "ref_ko": "다니엘 3:17-18; 하박국 3:17-18", "ref_zh": "但以理书 3:17-18; 哈巴谷书 3:17-18",
      "note": "2026-08-02 설교에서 언급됨 · 자료 미업로드"},
 ]
-index = {"generated": __import__("datetime").date.today().isoformat(), "site": {"ko": "설교로 배우는 중국어", "zh": "讲道中文"},
+latest = max((i for i in items), key=lambda i: i["date"])
+og_src = os.path.join(ROOT, "data", "cards", f"{latest['id']}.og.png")
+if os.path.exists(og_src):
+    import shutil; shutil.copy(og_src, os.path.join(ROOT, "data", "cards", "latest.og.png"))
+index = {"daily": daily, "generated": __import__("datetime").date.today().isoformat(), "site": {"ko": "설교로 배우는 중국어", "zh": "讲道中文"},
          "church": {"ko": "새오름교회", "zh": "言盐教会"}, "sermons": sorted(items + missing, key=lambda x: x["date"])}
 json.dump(index, open(os.path.join(ROOT, "data", "index.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("index:", [(i["id"], bool(i.get("video"))) for i in index["sermons"]])
